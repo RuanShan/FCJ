@@ -1,5 +1,6 @@
 class Setup < ActiveRecord::Migration
   def self.up
+    #楼幢
     create_table "build", :primary_key => "ID", :force => true do |t|
       t.string   "NO",            :limit => 50,                                                     :null => false
       t.string   "BuildNO",       :limit => 50,                                                     :null => false
@@ -786,43 +787,43 @@ class Setup < ActiveRecord::Migration
   end
 
   def self.down
-    
-    drop_table :demployee
-    drop_table :developer
-    drop_table :district
-    drop_table :dtproperties
-    drop_table  :ecemployee
-    drop_table :emptyhouse
-    drop_table :evaluatecorporation
-    drop_table :financialinfo
-    drop_table :house
-    drop_table :houseandcard
+    #houseinfo
+    drop_table ：build    #搂幢
+    drop_table :demployee #房地产从业人员
+    drop_table :developer #开发商
+    drop_table :district  #城区
+    drop_table :dtproperties#
+    drop_table :ecemployee          #评估人员
+    drop_table :emptyhouse          
+    drop_table :evaluatecorporation #评估机构
+    drop_table :financialinfo       #金融机构
+    drop_table :house               #房屋
+    drop_table :houseandcard        #房屋和房证关系
     drop_table :houseandrecordowner
-    drop_table :housecard
-    drop_table :housecardnumber
-    drop_table :housestate
-    drop_table :iemployee
-    drop_table :intermediary
-    drop_table :landinfo
-    drop_table :mappingcorporation
-    drop_table :mcemployee
-    drop_table :mcompany
-    drop_table :newhousecontract
-    drop_table :oldhousecontract
+    drop_table :housecard           #房证
+    drop_table :housecardnumber     #
+    drop_table :housestate          #房屋状态
+    drop_table :iemployee           #中介从业人员
+    drop_table :intermediary        #中介机构
+    drop_table :landinfo            #土地信息
+    drop_table :mappingcorporation  #测绘机构
+    drop_table :mcemployee          #测绘人员
+    drop_table :mcompany            #物业公司
+    drop_table :newhousecontract    #新房屋买卖合同
+    drop_table :oldhousecontract    #原房屋买卖合同
     drop_table :oldhousecontractandowner
     drop_table :oldhouserelease
-    drop_table :ownergroup
-    drop_table :ownerinfo
-    drop_table :poolbuild
+    drop_table :ownergroup          #业主
+    drop_table :ownerinfo           #业主
+    drop_table :poolbuild           #共有建筑
     drop_table :porjectcardandbuild
     drop_table :project
     drop_table :projectcard
     drop_table :projectcreateprocess
-    drop_table :provincecity
+    drop_table :provincecity        #省市
+    drop_table :section             #小区
+    drop_table :smsubcompany        #
     
-    drop_table :section
-    
-    drop_table :smsubcompany
-    
+    #houserecord
   end
 end
