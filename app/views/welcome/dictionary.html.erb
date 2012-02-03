@@ -1,0 +1,14 @@
+<div class="absolute">
+  <div class="block absolute">
+    <ul >
+      <% logger.debug @word_map.to_a.inspect%>
+    <% @word_map.to_a.sort!.each{|a| key, val = a[0],a[1]; next unless val.present? %>
+    <li>
+      <%=key%>: <%= raw val.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}%>
+      
+    </li>
+    
+    <% }%>
+  </ul>
+  </div>
+</div>
