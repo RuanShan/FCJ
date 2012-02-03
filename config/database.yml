@@ -9,11 +9,12 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fcj_development
+  database: fcj_houseinfo
   pool: 5
-  username: root
-  password:
+  username: fcj
+  password: fcj
   host: localhost
+  socket: /usr/local/mysql/data/mysql.sock #/var/lib/mysql/mysql.sock # 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,9 +25,10 @@ test:
   reconnect: false
   database: fcj_test
   pool: 5
-  username: root
-  password:
+  username: fcj
+  password: fcj
   host: localhost
+  socket: /usr/local/mysql/data/mysql.sock #/var/lib/mysql/mysql.sock # 
 
 production:
   adapter: mysql2
@@ -34,6 +36,6 @@ production:
   reconnect: false
   database: fcj_production
   pool: 5
-  username: root
+  username: fcj
   password:
   host: localhost
