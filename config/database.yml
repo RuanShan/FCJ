@@ -12,7 +12,7 @@ development:
   database: fcj_houseinfo
   pool: 5
   username: fcj
-  password: "fcj"
+  password: fcj
   host: localhost
   #socket: /usr/local/mysql/data/mysql.sock #/var/lib/mysql/mysql.sock #
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   database: fcj_test
   pool: 5
   username: fcj
-  password: "fcj"
+  password: fcj
   host: localhost
   #socket: /usr/local/mysql/data/mysql.sock #/var/lib/mysql/mysql.sock #
 production:
@@ -35,5 +35,5 @@ production:
   database: fcj_production
   pool: 5
   username: fcj
-  password: "fcj"
+  password: fcj
   host: localhost
