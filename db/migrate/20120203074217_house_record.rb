@@ -1,25 +1,25 @@
 class HouseRecord < ActiveRecord::Migration
   def self.up
     create_table "business", :primary_key => "ID", :force => true do |t|
-      t.string   "NameID",          :limit => 200,                   :null => false
-      t.string   "WorkID",          :limit => 200,                   :null => false
-      t.string   "BizID",           :limit => 32,                    :null => false
-      t.datetime "BOTime",                                           :null => false
-      t.datetime "RegisterTime"
-      t.string   "FinalWorker",     :limit => 32
-      t.string   "EnrolWorker",     :limit => 32
-      t.datetime "FinalTime"
-      t.string   "Memo",            :limit => 200
-      t.string   "ApprovalContext", :limit => 200
-      t.integer  "BizSource",       :limit => 8
-      t.string   "ProcessMessage",  :limit => 800
-      t.datetime "AddBizTime"
-      t.boolean  "Enable",                         :default => true, :null => false
-      t.string   "SelectBiz",       :limit => 32
-      t.string   "RecordBizNO",     :limit => 50
-      t.string   "ProjectID",       :limit => 32
-      t.string   "MappingCompany",  :limit => 32
-      t.string   "EvaluateCompany", :limit => 32
+      t.string   "NameID",          :limit => 200,                   :null => false                                        #
+      t.string   "WorkID",          :limit => 200,                   :null => false                                        #
+      t.string   "BizID",           :limit => 32,                    :null => false                                        #业务编号
+      t.datetime "BOTime",                                           :null => false                                        #归档时间
+      t.datetime "RegisterTime"                                                                                            #
+      t.string   "FinalWorker",     :limit => 32                                                                           #终审人
+      t.string   "EnrolWorker",     :limit => 32                                                                           #初审人
+      t.datetime "FinalTime"                                                                                               #终审时间
+      t.string   "Memo",            :limit => 200                                                                          #
+      t.string   "ApprovalContext", :limit => 200                                                                          #
+      t.integer  "BizSource",       :limit => 8                                                                            #业务来源
+      t.string   "ProcessMessage",  :limit => 800                                                                          #
+      t.datetime "AddBizTime"                                                                                              #补录业务时间
+      t.boolean  "Enable",                         :default => true, :null => false                                        #
+      t.string   "SelectBiz",       :limit => 32                                                                           #
+      t.string   "RecordBizNO",     :limit => 50                                                                           #
+      t.string   "ProjectID",       :limit => 32                                                                           #
+      t.string   "MappingCompany",  :limit => 32                                                                           #
+      t.string   "EvaluateCompany", :limit => 32                                                                           #
     end
   
     add_index "business", ["NameID"], :name => "AK_KEY_2_BUSINESS", :unique => true
