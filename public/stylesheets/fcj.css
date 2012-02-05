@@ -8,7 +8,7 @@ div.absolute{  position:absolute;  left:0;  right:0;  bottom:0;  top:0;  }
 div.absolute_tbl{  position:absolute;  left:0;  bottom:0;  top:0;  }
 div.absolute_rbl{ position:absolute;  left:0;  right:0;  bottom:0;  }
 div.absolute_tl{  position:absolute;  left:0;  top:0;}
-div.absolute_trb{position:absolute; top:0; right:0;bottom:0; width:300px; }
+div.absolute_trb{position:absolute; top:0; right:0;bottom:0;  }
 div.absolute_trl{position:absolute; top:0; right:0;left:0;  }
 .border_l{border-left:solid 1px #8BA0BC;}
 
@@ -139,4 +139,44 @@ div.block{
 }
 .closed{
   background-color:#57A1E8;
+}
+#header 
+{
+  height:30px;
+}
+#header h1
+{
+  margin:0;
+  padding: 2px 0;
+  text-align: center;
+}
+#footer
+{
+  height:20px;
+  border-top:solid 1px #8BA0BC;  
+}
+#footer .tail
+{
+  text-align: center;
+}
+#content
+{
+   border-top:solid 1px #8BA0BC;
+   top:30px;
+   bottom:20px;
+}
+#content .left_part
+{
+  width:150px;
+  padding:5px;
+  border-right:solid 1px #8BA0BC;
+}
+#content .center_part
+{
+  left:160px;
+}
+#welcome{
+  padding:10px;
+  margin:50px 0;
+  text-align: center;
 }

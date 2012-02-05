@@ -12,6 +12,9 @@ gem 'cancan'
 
 gem 'devise'
 
+# gem 'act_as_list'
+
+# gem 'act_as_tree'
 # Use unicorn as the web server
 # gem 'unicorn'
 

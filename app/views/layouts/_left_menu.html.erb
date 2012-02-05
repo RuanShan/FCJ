@@ -1,0 +1,17 @@
+<div id="lftnav">
+  <%for fg in @function_groups%>
+  <% next if fg.dgfunctions.empty?%>
+  <h3><a href="#"><%= fg[:GroupName]%></a></h3>
+  <ul>
+    <%for f in fg.dgfunctions%>
+      <li> <a> <%= f[:Name]%> </a></li>
+    <%end%>
+  </ul>
+  
+  <%end%>
+</div>
+<script>
+  $(function() {
+    $( "#lftnav" ).accordion();
+  });
+</script>

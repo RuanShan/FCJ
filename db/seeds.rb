@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+# load seed
+xpath = File.dirname(__FILE__)+ "/seeds/*.rb"
+Dir[xpath].sort.each {|file| 
+  puts "loading #{file}"
+  load file
+}

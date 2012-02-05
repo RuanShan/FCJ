@@ -1,5 +1,10 @@
 class WelcomeController < ApplicationController
   
+  def index
+    @function_groups = Dgfuncgroup.all(:include=>:dgfunctions,:order=>"Priority")
+    
+  end
+  
   def dictionary
     @word_map = {}
     open File.join(RAILS_ROOT,'doc','messages.properties') do |f|

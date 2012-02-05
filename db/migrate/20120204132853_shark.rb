@@ -1,6 +1,6 @@
 class Shark < ActiveRecord::Migration
   def self.up
-      create_table "drop_table :dgbiz", :primary_key => "ID", :force => true do |t|
+      create_table "dgbiz", :primary_key => "ID", :force => true do |t|
         t.string  "Code",         :limit => 200, :null => false
         t.integer "StartVarType", :limit => 8
         t.string  "StartVarName", :limit => 50
@@ -71,7 +71,7 @@ class Shark < ActiveRecord::Migration
       add_index "dgemployeerole", ["Emp_ID"], :name => "Relationship_1_FK"
       add_index "dgemployeerole", ["Rol_ID"], :name => "Relationship_2_FK"
     
-      create_table "dgfuncgroup", :primary_key => "ID", :force => true do |t|
+      create_table "dgfuncgroups", :primary_key => "id", :force => true,:options => 'DEFAULT CHARSET=utf8' do |t|
         t.string  "GroupName", :limit => 40,                 :null => false
         t.integer "Priority",                                :null => false
         t.string  "Memo",      :limit => 100
@@ -79,7 +79,7 @@ class Shark < ActiveRecord::Migration
         t.integer "InSystem",                 :default => 0, :null => false
       end
     
-      create_table "dgfunction", :primary_key => "ID", :force => true do |t|
+      create_table "dgfunctions", :primary_key => "id", :force => true,:options => 'DEFAULT CHARSET=utf8' do |t|
         t.string  "Name",             :limit => 20,                    :null => false
         t.string  "GroupID",          :limit => 32,                    :null => false
         t.string  "Icon",             :limit => 50,                    :null => false
@@ -91,7 +91,7 @@ class Shark < ActiveRecord::Migration
         t.boolean "WhetherProtected",                :default => true, :null => false
       end
     
-      add_index "dgfunction", ["GroupID"], :name => "FK_DGFUNCTI_REFERENCE_DGFUNCGR"
+      add_index "dgfunctions", ["GroupID"], :name => "FK_DGFUNCTI_REFERENCE_DGFUNCGR"
     
       create_table "dgorganise", :primary_key => "ID", :force => true do |t|
         t.string  "NO",       :limit => 50,  :null => false
@@ -206,8 +206,8 @@ class Shark < ActiveRecord::Migration
     drop_table :dgbizfile
     drop_table :dgemployee             #员工
     drop_table :dgemployeerole         #员工角色关系
-    drop_table :dgfuncgroup            #功能组
-    drop_table :dgfunction             #功能
+    drop_table :dgfuncgroups            #功能组
+    drop_table :dgfunctions             #功能
     drop_table :dgorganise             #组织机构
     drop_table :dgrateitems            #收费项目
     drop_table :dgrecordcontents       #卷内目录
