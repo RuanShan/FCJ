@@ -4,6 +4,16 @@ zh-CN:
       provincecity: 省市
       district: 城区
       section: 小区
+      developer: 开发商
+      demployee: 房地产从业人员
+      mappingcorporation: 测绘机构
+      mcemployee: 测绘机构人员
+      evaluatecorporation: 评估机构
+      ecemployee: 评估人员
+      intermediary: 中介机构
+      iemployee: 中介从业人员
+      financialinfo: 金融机构
+      ownergroup: 业主
     attributes:
       district:
         NO:  字号

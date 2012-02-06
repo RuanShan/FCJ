@@ -206,8 +206,8 @@ class Shark < ActiveRecord::Migration
     drop_table :dgbizfile
     drop_table :dgemployee             #员工
     drop_table :dgemployeerole         #员工角色关系
-    drop_table :dgfuncgroups            #功能组
-    drop_table :dgfunctions             #功能
+    drop_table :dgfuncgroups           #功能组
+    drop_table :dgfunctions            #功能
     drop_table :dgorganise             #组织机构
     drop_table :dgrateitems            #收费项目
     drop_table :dgrecordcontents       #卷内目录
@@ -215,8 +215,8 @@ class Shark < ActiveRecord::Migration
     drop_table :dgrole                 #角色
     drop_table :dgrolebiz              #业务权限
     drop_table :dgrolefunction         #功能权限
-    drop_table :dgsystemlog
-    drop_table :dgsystemparam
+    drop_table :dgsystemlog            #系统日志
+    drop_table :dgsystemparam          #系统参数
     drop_table :dgwordbook             #字典
     drop_table :dgwordbooktype         #字典类型
     drop_table :dtproperties
