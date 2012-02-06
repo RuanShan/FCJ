@@ -1,6 +1,6 @@
 class Shark < ActiveRecord::Migration
   def self.up
-      create_table "drop_table :dgbiz", :primary_key => "ID", :force => true do |t|
+      create_table "dgbiz", :primary_key => "ID", :force => true do |t|
         t.string  "Code",         :limit => 200, :null => false
         t.integer "StartVarType", :limit => 8
         t.string  "StartVarName", :limit => 50
