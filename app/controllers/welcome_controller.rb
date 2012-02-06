@@ -1,5 +1,9 @@
 class WelcomeController < ApplicationController
   
+  def index
+    
+  end
+  
   def dictionary
     @word_map = {}
     open File.join(RAILS_ROOT,'doc','messages.properties') do |f|
