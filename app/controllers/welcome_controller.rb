@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   
   def index
-    @function_groups = Dgfuncgroup.all(:include=>:dgfunctions,:order=>"Priority")
     
   end
   

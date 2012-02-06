@@ -170,10 +170,12 @@ div.block{
   width:150px;
   padding:5px;
   border-right:solid 1px #8BA0BC;
+  overflow: auto;
 }
 #content .center_part
 {
   left:160px;
+  overflow: auto;
 }
 #welcome{
   padding:10px;

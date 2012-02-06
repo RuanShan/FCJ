@@ -4,7 +4,12 @@
   <h3><a href="#"><%= fg[:GroupName]%></a></h3>
   <ul>
     <%for f in fg.dgfunctions%>
-      <li> <a> <%= f[:Name]%> </a></li>
+      <li><%if f[:LocateName]=~/District/%>
+             <a href="/fixer/list/district"> <%= f[:Name]%> </a>
+          <%else%>
+             <a> <%= f[:Name]%> </a>
+          <%end%>
+      </li>
     <%end%>
   </ul>
   

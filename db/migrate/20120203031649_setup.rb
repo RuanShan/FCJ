@@ -103,8 +103,8 @@ class Setup < ActiveRecord::Migration
   
     add_index "developer", ["NO"], :name => "AK_KEY_2_DEVELOPE", :unique => true
     add_index "developer", ["OwnerID"], :name => "FK_DEVELOPE_REFERENCE_OWNERINF"
-  
-    create_table "district", :primary_key => "ID", :force => true do |t|
+    #城区
+    create_table "districts", :primary_key => "id", :force => true do |t|
       t.string "NO",             :limit => 50,  :null => false
       t.string "Name",           :limit => 100                                                                             #名称
       t.string "memo",           :limit => 200                                                                             #备注
@@ -113,7 +113,7 @@ class Setup < ActiveRecord::Migration
       t.string "ProvinceCityID", :limit => 32                                                                              #省会索引？
     end
   
-    add_index "district", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
+    add_index "districts", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
   
     create_table "dtproperties", :id => false, :force => true do |t|                                                       #地区属性？
       t.integer "id",                                            :null => false

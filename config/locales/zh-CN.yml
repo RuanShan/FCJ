@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      district: 城区
+      provincecity: 省市
+    attributes:
+      district:
+        NO: NO
+        Name: Name
+        memo: memo
+        WordNO: WordNO
+        
