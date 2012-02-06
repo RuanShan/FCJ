@@ -5,7 +5,7 @@
   <ul>
     <%for f in fg.dgfunctions%>
       <li><%if f[:LocateName]=~/District/%>
-             <a href="/fixer/list/district"> <%= f[:Name]%> </a>
+             <a href="/fixers/list/district"> <%= f[:Name]%> </a>
           <%else%>
              <a> <%= f[:Name]%> </a>
           <%end%>

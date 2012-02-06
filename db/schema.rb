@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -353,7 +352,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.float    "AddUp"
   end
 
-  create_table "district", :primary_key => "ID", :force => true do |t|
+  create_table "district", :force => true do |t|
     t.string "NO",             :limit => 50,  :null => false
     t.string "Name",           :limit => 100
     t.string "memo",           :limit => 200

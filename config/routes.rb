@@ -1,9 +1,15 @@
 Fcj::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-     match 'dict' => 'welcome#dictionary'
-     match '/fixer/list/:class' => 'fixer#list'
+  match 'dict' => 'welcome#dictionary'
+  match '/fixers/list/:class' => 'fixers#list'
+  match '/fixers/new/:class' => 'fixers#new'
+  match '/fixers/edit/:class/:id' => 'fixers#edit'
+  match '/fixers/update/:class/:id' => 'fixers#update'
+  match '/fixers/destroy/:class/:id' => 'fixers#destroy'
+  match '/fixers/create/:class' => 'fixers#create'
 
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

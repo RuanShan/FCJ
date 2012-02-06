@@ -1,12 +1,21 @@
 zh-CN:
   activerecord:
     models:
-      district: 城区
       provincecity: 省市
+      district: 城区
+      section: 小区
     attributes:
       district:
-        NO: NO
-        Name: Name
-        memo: memo
-        WordNO: WordNO
-        
+        NO:  字号
+        Name: 城区名称
+        memo: 备注
+        WordNO: 房字号
+        DisNO: 城区编号
+        ProvinceCityID: 省市
+      section:
+        NO: 小区编号
+        DistrictID: 城区名称
+        Name: 小区名称
+        CreateDate: 开盘时间
+        Address: 项目地址
+        Memo: 备注
