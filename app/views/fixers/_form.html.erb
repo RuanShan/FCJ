@@ -11,11 +11,11 @@
     </div>
   <% end %>
   
-  <% for col in @object_class.new_cols%>
+  <% @object_class.new_cols.size.fdiv(3).ceil.times{ |i| %>
+      <p>
+  <%   for col in @object_class.new_cols.slice(i*3,3)%>
       <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col) %>
       <%= text_field_tag "object[#{col}]",@object[col]  %>   
-      
-      <%i+=1;%>
-      <%= raw("<br/>") if i%3==0%> 
-  <% end %>
-  
+    <% end %>
+      </p>
+  <% }%>

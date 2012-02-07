@@ -184,8 +184,8 @@ div.block{
 }
 .dialog{
  position:absolute;
-  width:700px;
-  height:400px;
+  width:740px;
+  height:438px;
   background-color:#ffffff;
   border:1px solid #909AA6;
   overflow: auto;
@@ -219,11 +219,15 @@ a.close
   padding:2px;
   top:0;
 }  
+form p
+{
+  
+}
 form.new  label
 {
   display:inline-block;
-  width: 60px;
-  padding-left:10px;
+  width: 80px;
+  text-align:right;
 }
 form.new  input[type="text"]
 {
