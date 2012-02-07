@@ -1,0 +1,15 @@
+<% 
+model_dialog_style = "display:none;"
+if @model_dialog_content
+  model_dialog_style = ""
+end
+-%>
+
+<div id="model_dialog" class="dialog" style="<%=model_dialog_style%>">
+  <%=build_close_button('model_dialog')%>
+
+<% if @model_dialog_content -%>
+<%= render :partial=>  @model_dialog_content%>
+<% end-%>
+</div>
+

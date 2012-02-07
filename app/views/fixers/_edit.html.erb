@@ -1,0 +1,10 @@
+<h3>edit <%=@object_class.model_name.human%></h3>
+<%= form_tag "/fixers/update/#{@object_class.model_name}/#{@object.id}",:remote => true, :class=>"new" do |f| %>
+  
+  <%= render :partial=>"form"%>
+  <p>
+  <%= submit_tag "confirm" %>  
+  <%= button_to_function "cancel","dialog('close')" %>
+  </p>  
+<% end %>
+  

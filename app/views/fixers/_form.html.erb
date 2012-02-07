@@ -1,0 +1,21 @@
+  <% i=0%>
+    <% if @object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% for col in @object_class.new_cols%>
+      <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col) %>
+      <%= text_field_tag "object[#{col}]",@object[col]  %>   
+      
+      <%i+=1;%>
+      <%= raw("<br/>") if i%2==0%> 
+  <% end %>
+  
