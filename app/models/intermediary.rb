@@ -1,0 +1,2 @@
+class Intermediary < Company
+end

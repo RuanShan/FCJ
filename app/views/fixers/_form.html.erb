@@ -1,7 +1,7 @@
   <% i=0%>
     <% if @object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this <%=@object_class.model_name.human%> from being saved:</h2>
 
       <ul>
       <% @object.errors.full_messages.each do |msg| %>
@@ -16,6 +16,6 @@
       <%= text_field_tag "object[#{col}]",@object[col]  %>   
       
       <%i+=1;%>
-      <%= raw("<br/>") if i%2==0%> 
+      <%= raw("<br/>") if i%3==0%> 
   <% end %>
   

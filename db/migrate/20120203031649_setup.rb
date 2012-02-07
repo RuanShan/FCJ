@@ -69,20 +69,20 @@ class Setup < ActiveRecord::Migration
     add_index "demployee", ["Owner"], :name => "FK_DEMPLOYE_REFERENCE_OWNERINF"
   
     create_table "developer", :primary_key => "ID", :force => true do |t|
-      t.string   "NO", :limit => 50,       :null => false
-      t.string   "Name",            :limit => 100,      :null => false #名称
+      t.string   "NO", :limit => 50,       :null => false   #备案编号
+      t.string   "Name",            :limit => 100,      :null => false #公司名称
       t.string   "OwnerName",       :limit => 20          #法人姓名
       t.string   "OwnerCard",       :limit => 50          #法人证件
       t.integer  "CompanyType",     :limit => 8           #公司类型？
-      t.string   "Manager",         :limit => 20          #经理
+      t.string   "Manager",         :limit => 20          #公司经理
       t.integer  "GroupLeve",       :limit => 8           #组等级？
       t.string   "E_Mail",          :limit => 50          #电子邮箱
       t.string   "PhoneNumber",     :limit => 200         #电话号码
       t.string   "Fax",:limit => 50          #传真
       t.string   "PostCode",        :limit => 50          #邮编
       t.string   "Address",         :limit => 100         #地址
-      t.string   "CompanyCode",     :limit => 100         #？
-      t.string   "LicenseNO",       :limit => 100         #证书编号？
+      t.string   "CompanyCode",     :limit => 100         #机构代码证号
+      t.string   "LicenseNO",       :limit => 100         #营业执照号
       t.decimal  "RegMoney",          :precision => 18, :scale => 3    #注册资金？
       t.datetime "DateTo"       #？
       t.string   "Memo",            :limit => 200         #备注
@@ -784,6 +784,39 @@ class Setup < ActiveRecord::Migration
     add_index "smsubcompany", ["MCompany"], :name => "FK_SMSUBCOM_REFERENCE_MCOMPANY"
     add_index "smsubcompany", ["Section"], :name => "FK_SMSUBCOM_REFERENCE_SECTION"
 
+      
+    create_table "companies", :primary_key => "ID", :force => true do |t|
+      t.string   "NO", :limit => 50,       :null => false   #备案编号
+      t.string   "Name",            :limit => 100,      :null => false #公司名称
+      t.string   "OwnerName",       :limit => 20          #法人姓名
+      t.string   "OwnerCard",       :limit => 50          #法人证件
+      t.integer  "type",     :limit => 8                  #公司类型
+      t.string   "Manager",         :limit => 20          #公司经理
+      t.integer  "GroupLeve",       :limit => 8           #组等级？
+      t.string   "E_Mail",          :limit => 50          #电子邮箱
+      t.string   "PhoneNumber",     :limit => 200         #电话号码
+      t.string   "Fax",:limit => 50          #传真
+      t.string   "PostCode",        :limit => 50          #邮编
+      t.string   "Address",         :limit => 100         #地址
+      t.string   "CompanyCode",     :limit => 100         #机构代码证号
+      t.string   "LicenseNO",       :limit => 100         #营业执照号
+      t.decimal  "RegMoney",          :precision => 18, :scale => 3    #注册资金？
+      t.datetime "DateTo"       #？
+      t.string   "Memo",            :limit => 200         #备注
+      t.string   "OwnerID",         :limit => 32          #法人索引？证件？
+      t.string   "Icon",            :limit => 100         #图标？
+      t.string   "Password",        :limit => 50          #密码
+      t.boolean  "IsOff"        #是否注销
+      t.datetime "OffDate"      #注销日期
+      t.string   "GoodAction",      :limit => 100         #优良行为
+      t.string   "NoGoodAction",    :limit => 100         #不良行为
+      t.string   "Complaints",      :limit => 100         #举报投诉
+      t.string   "TaxLicenseNO",    :limit => 100         #税务登记证号
+      t.string   "WebAddress",      :limit => 100         #网站
+      t.integer  "ChildrenCount"#分支机构数量
+      t.string   "ChildrenCompany", :limit => 200         #分支机构
+      t.datetime "RecordDate"   #备案时间
+    end
   end
 
   def self.down
@@ -823,6 +856,7 @@ class Setup < ActiveRecord::Migration
     drop_table :provincecity        #省市
     drop_table :section#小区
     drop_table :smsubcompany        #
+    drop_table :companies        #  公司抽象
     
     #houserecord
   end

@@ -60,4 +60,8 @@ class FixersController < ApplicationController
     end
   end
   
+  #maintain dict
+  def dict
+    
+  end
 end

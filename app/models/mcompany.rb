@@ -1,0 +1,2 @@
+class Mcompany < Company
+end

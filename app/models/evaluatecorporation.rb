@@ -1,0 +1,2 @@
+class Evaluatecorporation < Company
+end

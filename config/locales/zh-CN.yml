@@ -16,7 +16,7 @@ zh-CN:
       ownergroup: 业主
     attributes:
       district:
-        NO:  字号
+        NO: 字号
         Name: 城区名称
         memo: 备注
         WordNO: 房字号
@@ -29,3 +29,35 @@ zh-CN:
         CreateDate: 开盘时间
         Address: 项目地址
         Memo: 备注
+      company:
+        No: 备案编号
+        Name: 公司名称
+        OwnerName: 法人姓名
+        OwnerCard: OwnerCard
+        type: 公司类型
+        Manager: 公司经理
+        GroupLeve: 资质等级
+        E_Mail: 电子邮箱
+        PhoneNumber: 电话号码
+        Fax: 传真
+        PostCode: 邮编
+        Address: 地址
+        CompanyCode: 机构代码证号
+        LicenseNO: 营业执照号
+        RegMoney: 注册资金
+        DateTo: 年检日期
+        Memo: 备注
+        OwnerID: 法人索引
+        Icon: Icon
+        Password: 备案密码
+        IsOff: 是否注销
+        OffDate: 注销日期
+        GoodAction: 优良行为
+        NoGoodAction: 不良行为
+        Complaints: 举报投诉
+        TaxLicenseNO: 税务登记证号
+        WebAddress: 网站
+        ChildrenCount: 分支机构数量
+        ChildrenCompany: 分支机构
+        RecordDate: 登记时间
+   

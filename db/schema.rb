@@ -95,6 +95,39 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "keycode",         :limit => 12
   end
 
+  create_table "companies", :primary_key => "ID", :force => true do |t|
+    t.string   "NO",              :limit => 50,                                 :null => false
+    t.string   "Name",            :limit => 100,                                :null => false
+    t.string   "OwnerName",       :limit => 20
+    t.string   "OwnerCard",       :limit => 50
+    t.integer  "type",            :limit => 8
+    t.string   "Manager",         :limit => 20
+    t.integer  "GroupLeve",       :limit => 8
+    t.string   "E_Mail",          :limit => 50
+    t.string   "PhoneNumber",     :limit => 200
+    t.string   "Fax",             :limit => 50
+    t.string   "PostCode",        :limit => 50
+    t.string   "Address",         :limit => 100
+    t.string   "CompanyCode",     :limit => 100
+    t.string   "LicenseNO",       :limit => 100
+    t.decimal  "RegMoney",                       :precision => 18, :scale => 3
+    t.datetime "DateTo"
+    t.string   "Memo",            :limit => 200
+    t.string   "OwnerID",         :limit => 32
+    t.string   "Icon",            :limit => 100
+    t.string   "Password",        :limit => 50
+    t.boolean  "IsOff"
+    t.datetime "OffDate"
+    t.string   "GoodAction",      :limit => 100
+    t.string   "NoGoodAction",    :limit => 100
+    t.string   "Complaints",      :limit => 100
+    t.string   "TaxLicenseNO",    :limit => 100
+    t.string   "WebAddress",      :limit => 100
+    t.integer  "ChildrenCount"
+    t.string   "ChildrenCompany", :limit => 200
+    t.datetime "RecordDate"
+  end
+
   create_table "demployee", :primary_key => "ID", :force => true do |t|
     t.string   "NO",            :limit => 50,  :null => false
     t.string   "Developer",     :limit => 32,  :null => false
@@ -226,6 +259,11 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgemployeerole", ["Emp_ID"], :name => "Relationship_1_FK"
   add_index "dgemployeerole", ["Rol_ID"], :name => "Relationship_2_FK"
 
+  create_table "dgflow", :force => true do |t|
+    t.string  "Name",     :limit => 20, :null => false
+    t.integer "position"
+  end
+
   create_table "dgfuncgroups", :force => true do |t|
     t.string  "GroupName", :limit => 40,                 :null => false
     t.integer "Priority",                                :null => false
@@ -296,6 +334,11 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   end
 
   add_index "dgrolebiz", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
+
+  create_table "dgroleflow", :id => false, :force => true do |t|
+    t.string "Rol_ID", :limit => 32, :null => false
+    t.string "FLO_ID", :limit => 32, :null => false
+  end
 
   create_table "dgrolefunction", :id => false, :force => true do |t|
     t.string "Rol_ID", :limit => 32, :null => false

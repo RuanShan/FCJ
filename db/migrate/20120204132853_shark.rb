@@ -132,7 +132,7 @@ class Shark < ActiveRecord::Migration
         t.string "NO",   :limit => 50, :null => false
         t.string "Name", :limit => 20, :null => false
       end
-    
+          
       add_index "dgrole", ["NO"], :name => "AK_KEY_2_DGROLE", :unique => true
     
       create_table "dgrolebiz", :id => false, :force => true do |t|
@@ -149,7 +149,17 @@ class Shark < ActiveRecord::Migration
     
       add_index "dgrolefunction", ["Fun_ID"], :name => "Relationship_4_FK"
       add_index "dgrolefunction", ["Rol_ID"], :name => "Relationship_3_FK"
+
+      create_table "dgflow", :primary_key => "id", :force => true do |t|
+        t.string "Name", :limit => 20, :null => false
+        t.integer "position"
+      end
+      create_table "dgroleflow", :id => false, :force => true do |t|
+        t.string "Rol_ID", :limit => 32, :null => false
+        t.string "FLO_ID", :limit => 32, :null => false
+      end
     
+        
       create_table "dgsystemlog", :primary_key => "ID", :force => true do |t|
         t.datetime "LogDate"
         t.string   "LogThread",  :limit => 50
@@ -221,5 +231,8 @@ class Shark < ActiveRecord::Migration
     drop_table :dgwordbooktype         #字典类型
     drop_table :dtproperties
     drop_table :objectid
+    # added
+    drop_table :dgflow
+    drop_table :dgroleflow
   end
 end
