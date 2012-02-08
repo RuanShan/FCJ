@@ -62,6 +62,6 @@ class FixersController < ApplicationController
   
   #maintain dict
   def dict
-    
+    @objects = @object_class.all(:include=>:dgwordbooks)
   end
 end

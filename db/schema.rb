@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -366,7 +367,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string "Comment",    :limit => 100
   end
 
-  create_table "dgwordbook", :primary_key => "ID", :force => true do |t|
+  create_table "dgwordbook", :force => true do |t|
     t.string  "Key",      :limit => 50,  :null => false
     t.string  "Value",    :limit => 100, :null => false
     t.integer "TypeID",   :limit => 8,   :null => false
@@ -376,7 +377,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
 
-  create_table "dgwordbooktype", :primary_key => "ID", :force => true do |t|
+  create_table "dgwordbooktype", :force => true do |t|
     t.string  "TypeName", :limit => 50,  :null => false
     t.boolean "IsSystem",                :null => false
     t.string  "Memo",     :limit => 100
