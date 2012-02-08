@@ -25,10 +25,11 @@ logger.debug ch.class
       %>
       <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col), :class=>controll_class %>
       <% if  col.to_s=~/ID/ %>
-          <% belongs_to_object = @object.send( col.to_s.downcase) 
-             belongs_to_objects =   belongs_to_object.class.all() 
+          <% logger.debug "method=#{ col.to_s[0...-2].downcase}"
+             belongs_to_object_class = col.to_s[0...-2].classify().constantize()  # remove suffix "ID" 
+             belongs_to_objects =   belongs_to_object_class.all() 
           %>
-          <%= select "object","col",belongs_to_objects.collect{|obj| obj[:Name],obj[:id]} %> 
+          <%= select "object",col,belongs_to_objects.collect{|obj| [obj[:Name],obj[:id]]} %> 
       <% elsif  ch[col.to_s].type == :string and ch[col.to_s].limit >200 %>
         <%= text_area "object", col, :class=>controll_class%>      
       <% elsif  ch[col.to_s].type == :boolean %>
