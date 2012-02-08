@@ -1,20 +1,30 @@
-  <div class="absolute_tbl" style="width:100px;overflow:auto;">
-    <div>
-    <%=@object_class.human_attribute_name('TypeName') %></div>
-    <ul>
+  <div style="height:50px;"> subheader
+  </div>
+
+  <div id="word_type_list" class="absolute_tbl" style="top:50px;width:130px;overflow:auto;">
+    <div>  <%=@object_class.human_attribute_name('TypeName') %>
+    </div>
+    <ul class="list">
     <% for wbt in @objects%>
-     <li> <a> <%=wbt[:TypeName]%> </a></li>
+     <li data-section-id="<%=wbt.id%>"> <a> <%=wbt[:TypeName]%> </a></li>
     <% end %>
     </ul>
+    <input type="hidden" name="selected" />
   </div>
-  <div class="absolute_trb" style="left:100px;">
+  <div id="word_list" class="absolute_trb" style="top:50px;left:130px;overflow:auto;">
     <% for wbt in @objects%>
-    <div>
-      <%=wbt[:TypeName]%>  |add, update, add word
-    </div>
-    <div>
-      <% next if wbt.dgwordbooks.empty? %>
-      <%= render :partial=>"fields", :locals=>{:objects=>wbt.dgwordbooks} %>
+    <div >
+      <div>
+        <%=wbt[:TypeName]%>  |add, update, add word
+      </div>
+      <div>
+        <%= render :partial=>"fields", :locals=>{:objects=>wbt.dgwordbooks} %>
+      </div>
     </div>
     <% end %>
   </div>
+<script type="text/javascript">
+$(document).ready(function() {
+  add_list_feature("#word_type_list li");
+})
+</script>

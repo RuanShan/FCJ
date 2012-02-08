@@ -235,3 +235,38 @@ form.new  input.single_entry, form.new  textarea.single_entry
 
 form.new  textarea.single_entry{  height:50px; }
 form.new  label.text_area{  vertical-align:top; }
+
+
+ul.list {
+  position:relative;
+  padding:0 0.5em;
+  list-style:none;
+}
+
+
+ul.list A {
+  display:block;
+  text-decoration:none;
+  margin:0;
+  padding:0.25em 0.5em;
+  border:1px solid #ddd;
+}
+
+ul.list A:hover,
+ul.list A:active,
+ul.list A:link,
+ul.list A:visited {
+}
+
+ul.list A.here:link,
+ul.list A.here:visited {
+}
+#word_list>div
+{
+  display:none;
+}
+
+#word_list div.selected
+{
+  display:block;
+}

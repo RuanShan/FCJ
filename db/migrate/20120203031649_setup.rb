@@ -104,7 +104,7 @@ class Setup < ActiveRecord::Migration
     add_index "developer", ["NO"], :name => "AK_KEY_2_DEVELOPE", :unique => true
     add_index "developer", ["OwnerID"], :name => "FK_DEVELOPE_REFERENCE_OWNERINF"
     #城区
-    create_table "district", :primary_key => "id", :force => true do |t|
+    create_table "districts", :primary_key => "id", :force => true do |t|
       t.string "NO",:limit => 50,  :null => false
       t.string "Name",           :limit => 100            #名称
       t.string "memo",           :limit => 200            #备注
@@ -113,7 +113,7 @@ class Setup < ActiveRecord::Migration
       t.string "ProvinceCityID", :limit => 32#省会索引？
     end
   
-    add_index "district", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
+    add_index "districts", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
   
     create_table "dtproperties", :id => false, :force => true do |t|   #地区属性？
       t.integer "id",     :null => false
@@ -825,7 +825,7 @@ class Setup < ActiveRecord::Migration
     drop_table :build    #搂幢
     drop_table :demployee #房地产从业人员
     drop_table :developer #开发商
-    drop_table :district  #城区
+    drop_table :districts  #城区
     drop_table :dtproperties#
     drop_table :ecemployee          #评估人员
     drop_table :emptyhouse          
