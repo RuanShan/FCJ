@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -188,19 +189,6 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "developer", ["NO"], :name => "AK_KEY_2_DEVELOPE", :unique => true
   add_index "developer", ["OwnerID"], :name => "FK_DEVELOPE_REFERENCE_OWNERINF"
 
-  create_table "dgbiz", :primary_key => "ID", :force => true do |t|
-    t.string  "Code",         :limit => 200, :null => false
-    t.integer "StartVarType", :limit => 8
-    t.string  "StartVarName", :limit => 50
-    t.string  "Memo",         :limit => 200
-    t.string  "OperPage",     :limit => 200
-    t.string  "StartService", :limit => 100
-    t.string  "PackageName",  :limit => 50
-  end
-
-  add_index "dgbiz", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
-  add_index "dgbiz", ["StartVarType"], :name => "FK_DGBIZ_REFERENCE_DGWORDBO"
-
   create_table "dgbizandrateitems", :id => false, :force => true do |t|
     t.string  "Biz",       :limit => 32, :null => false
     t.integer "RateItems", :limit => 8,  :null => false
@@ -230,7 +218,28 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgbizfile", ["DocID"], :name => "FK_DGBIZFIL_REFERENCE_DGBIZDOC"
   add_index "dgbizfile", ["EmployeeID"], :name => "FK_DGBIZFIL_REFERENCE_DGEMPLOY"
 
-  create_table "dgemployee", :primary_key => "ID", :force => true do |t|
+  create_table "dgbizs", :force => true do |t|
+    t.string  "Code",         :limit => 200, :null => false
+    t.integer "StartVarType", :limit => 8
+    t.string  "StartVarName", :limit => 50
+    t.string  "Memo",         :limit => 200
+    t.string  "OperPage",     :limit => 200
+    t.string  "StartService", :limit => 100
+    t.string  "PackageName",  :limit => 50
+  end
+
+  add_index "dgbizs", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
+  add_index "dgbizs", ["StartVarType"], :name => "FK_DGBIZ_REFERENCE_DGWORDBO"
+
+  create_table "dgemployeeroles", :id => false, :force => true do |t|
+    t.string "Rol_ID", :limit => 32, :null => false
+    t.string "Emp_ID", :limit => 32, :null => false
+  end
+
+  add_index "dgemployeeroles", ["Emp_ID"], :name => "Relationship_1_FK"
+  add_index "dgemployeeroles", ["Rol_ID"], :name => "Relationship_2_FK"
+
+  create_table "dgemployees", :force => true do |t|
     t.string   "Org_ID",      :limit => 32
     t.string   "NO",          :limit => 50,                    :null => false
     t.string   "Name",        :limit => 20,                    :null => false
@@ -247,17 +256,9 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.integer  "job",         :limit => 8
   end
 
-  add_index "dgemployee", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
-  add_index "dgemployee", ["Org_ID"], :name => "Relationship_6_FK"
-  add_index "dgemployee", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
-
-  create_table "dgemployeerole", :id => false, :force => true do |t|
-    t.string "Rol_ID", :limit => 32, :null => false
-    t.string "Emp_ID", :limit => 32, :null => false
-  end
-
-  add_index "dgemployeerole", ["Emp_ID"], :name => "Relationship_1_FK"
-  add_index "dgemployeerole", ["Rol_ID"], :name => "Relationship_2_FK"
+  add_index "dgemployees", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
+  add_index "dgemployees", ["Org_ID"], :name => "Relationship_6_FK"
+  add_index "dgemployees", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
 
   create_table "dgflow", :force => true do |t|
     t.string  "Name",     :limit => 20, :null => false
@@ -286,7 +287,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "dgfunctions", ["GroupID"], :name => "FK_DGFUNCTI_REFERENCE_DGFUNCGR"
 
-  create_table "dgorganise", :primary_key => "ID", :force => true do |t|
+  create_table "dgorganises", :force => true do |t|
     t.string  "NO",       :limit => 50,  :null => false
     t.string  "ParentID", :limit => 32
     t.boolean "IsRoot",                  :null => false
@@ -295,8 +296,8 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string  "Memo",     :limit => 100
   end
 
-  add_index "dgorganise", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
-  add_index "dgorganise", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
+  add_index "dgorganises", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
+  add_index "dgorganises", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
 
   create_table "dgrateitems", :primary_key => "ID", :force => true do |t|
     t.string  "Name",        :limit => 50,  :null => false
@@ -321,32 +322,32 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "Memo",            :limit => 200
   end
 
-  create_table "dgrole", :primary_key => "ID", :force => true do |t|
-    t.string "NO",   :limit => 50, :null => false
-    t.string "Name", :limit => 20, :null => false
-  end
-
-  add_index "dgrole", ["NO"], :name => "AK_KEY_2_DGROLE", :unique => true
-
-  create_table "dgrolebiz", :id => false, :force => true do |t|
+  create_table "dgrolebizs", :id => false, :force => true do |t|
     t.string "Rol_ID", :limit => 32, :null => false
     t.string "Biz_ID", :limit => 32, :null => false
   end
 
-  add_index "dgrolebiz", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
+  add_index "dgrolebizs", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
 
   create_table "dgroleflow", :id => false, :force => true do |t|
     t.string "Rol_ID", :limit => 32, :null => false
     t.string "FLO_ID", :limit => 32, :null => false
   end
 
-  create_table "dgrolefunction", :id => false, :force => true do |t|
+  create_table "dgrolefunctions", :id => false, :force => true do |t|
     t.string "Rol_ID", :limit => 32, :null => false
     t.string "Fun_ID", :limit => 32, :null => false
   end
 
-  add_index "dgrolefunction", ["Fun_ID"], :name => "Relationship_4_FK"
-  add_index "dgrolefunction", ["Rol_ID"], :name => "Relationship_3_FK"
+  add_index "dgrolefunctions", ["Fun_ID"], :name => "Relationship_4_FK"
+  add_index "dgrolefunctions", ["Rol_ID"], :name => "Relationship_3_FK"
+
+  create_table "dgroles", :force => true do |t|
+    t.string "NO",   :limit => 50, :null => false
+    t.string "Name", :limit => 20, :null => false
+  end
+
+  add_index "dgroles", ["NO"], :name => "AK_KEY_2_DGROLE", :unique => true
 
   create_table "dgsystemlog", :primary_key => "ID", :force => true do |t|
     t.datetime "LogDate"

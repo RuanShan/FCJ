@@ -1,6 +1,6 @@
 class Shark < ActiveRecord::Migration
   def self.up
-      create_table "dgbiz", :primary_key => "ID", :force => true do |t|
+      create_table "dgbizs", :primary_key => "id", :force => true do |t|
         t.string  "Code",         :limit => 200, :null => false
         t.integer "StartVarType", :limit => 8
         t.string  "StartVarName", :limit => 50
@@ -10,8 +10,8 @@ class Shark < ActiveRecord::Migration
         t.string  "PackageName",  :limit => 50
       end
     
-      add_index "dgbiz", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
-      add_index "dgbiz", ["StartVarType"], :name => "FK_DGBIZ_REFERENCE_DGWORDBO"
+      add_index "dgbizs", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
+      add_index "dgbizs", ["StartVarType"], :name => "FK_DGBIZ_REFERENCE_DGWORDBO"
     
       create_table "dgbizandrateitems", :id => false, :force => true do |t|
         t.string  "Biz",       :limit => 32, :null => false
@@ -42,7 +42,7 @@ class Shark < ActiveRecord::Migration
       add_index "dgbizfile", ["DocID"], :name => "FK_DGBIZFIL_REFERENCE_DGBIZDOC"
       add_index "dgbizfile", ["EmployeeID"], :name => "FK_DGBIZFIL_REFERENCE_DGEMPLOY"
     
-      create_table "dgemployee", :primary_key => "ID", :force => true do |t|
+      create_table "dgemployees", :primary_key => "id", :force => true do |t|
         t.string   "Org_ID",      :limit => 32
         t.string   "NO",          :limit => 50,                    :null => false
         t.string   "Name",        :limit => 20,                    :null => false
@@ -59,17 +59,17 @@ class Shark < ActiveRecord::Migration
         t.integer  "job",         :limit => 8
       end
     
-      add_index "dgemployee", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
-      add_index "dgemployee", ["Org_ID"], :name => "Relationship_6_FK"
-      add_index "dgemployee", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
+      add_index "dgemployees", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
+      add_index "dgemployees", ["Org_ID"], :name => "Relationship_6_FK"
+      add_index "dgemployees", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
     
-      create_table "dgemployeerole", :id => false, :force => true do |t|
+      create_table "dgemployeeroles", :id => false, :force => true do |t|
         t.string "Rol_ID", :limit => 32, :null => false
         t.string "Emp_ID", :limit => 32, :null => false
       end
     
-      add_index "dgemployeerole", ["Emp_ID"], :name => "Relationship_1_FK"
-      add_index "dgemployeerole", ["Rol_ID"], :name => "Relationship_2_FK"
+      add_index "dgemployeeroles", ["Emp_ID"], :name => "Relationship_1_FK"
+      add_index "dgemployeeroles", ["Rol_ID"], :name => "Relationship_2_FK"
     
       create_table "dgfuncgroups", :primary_key => "id", :force => true,:options => 'DEFAULT CHARSET=utf8' do |t|
         t.string  "GroupName", :limit => 40,                 :null => false
@@ -93,7 +93,7 @@ class Shark < ActiveRecord::Migration
     
       add_index "dgfunctions", ["GroupID"], :name => "FK_DGFUNCTI_REFERENCE_DGFUNCGR"
     
-      create_table "dgorganise", :primary_key => "ID", :force => true do |t|
+      create_table "dgorganises", :primary_key => "id", :force => true do |t|
         t.string  "NO",       :limit => 50,  :null => false
         t.string  "ParentID", :limit => 32
         t.boolean "IsRoot",                  :null => false
@@ -102,8 +102,8 @@ class Shark < ActiveRecord::Migration
         t.string  "Memo",     :limit => 100
       end
     
-      add_index "dgorganise", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
-      add_index "dgorganise", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
+      add_index "dgorganises", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
+      add_index "dgorganises", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
     
       create_table "dgrateitems", :primary_key => "ID", :force => true do |t|
         t.string  "Name",        :limit => 50,  :null => false
@@ -128,27 +128,27 @@ class Shark < ActiveRecord::Migration
         t.string   "Memo",            :limit => 200
       end
     
-      create_table "dgrole", :primary_key => "ID", :force => true do |t|
+      create_table "dgroles", :primary_key => "id", :force => true do |t|
         t.string "NO",   :limit => 50, :null => false
         t.string "Name", :limit => 20, :null => false
       end
           
-      add_index "dgrole", ["NO"], :name => "AK_KEY_2_DGROLE", :unique => true
+      add_index "dgroles", ["NO"], :name => "AK_KEY_2_DGROLE", :unique => true
     
-      create_table "dgrolebiz", :id => false, :force => true do |t|
+      create_table "dgrolebizs", :id => false, :force => true do |t|
         t.string "Rol_ID", :limit => 32, :null => false
         t.string "Biz_ID", :limit => 32, :null => false
       end
     
-      add_index "dgrolebiz", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
+      add_index "dgrolebizs", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
     
-      create_table "dgrolefunction", :id => false, :force => true do |t|
+      create_table "dgrolefunctions", :id => false, :force => true do |t|
         t.string "Rol_ID", :limit => 32, :null => false
         t.string "Fun_ID", :limit => 32, :null => false
       end
     
-      add_index "dgrolefunction", ["Fun_ID"], :name => "Relationship_4_FK"
-      add_index "dgrolefunction", ["Rol_ID"], :name => "Relationship_3_FK"
+      add_index "dgrolefunctions", ["Fun_ID"], :name => "Relationship_4_FK"
+      add_index "dgrolefunctions", ["Rol_ID"], :name => "Relationship_3_FK"
 
       create_table "dgflow", :primary_key => "id", :force => true do |t|
         t.string "Name", :limit => 20, :null => false
