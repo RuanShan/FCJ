@@ -3,5 +3,5 @@ class Developer < Company
   self.new_cols=[:NO,:Name,:E_Mail,:RegMoney, :OwnerName,:OwnerCard,
        :Manager,:PhoneNumber,:Fax,:PostCode,:CompanyCode,:LicenseNO,:WebAddress,
        :ChildrenCompany,:ChildrenCount,:GoodAction,:NoGoodAction,:Complaints,:TaxLicenseNO,
-       :GroupLeve,:IsOff,:RecordDate,:OffDate,:DateTo,:Address,:Memo]
+       :D_GroupLeve,[:IsOff],:RecordDate,:OffDate,:DateTo,[:Address],[:Memo]]
 end

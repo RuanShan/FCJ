@@ -1,4 +1,4 @@
-<h3>edit <%=@object_class.model_name.human%></h3>
+<h3><%= t :edit%> <%=@object_class.model_name.human%></h3>
 <%= form_tag "/fixers/update/#{@object_class.model_name}/#{@object.id}",:remote => true, :class=>"new" do |f| %>
   
   <%= render :partial=>"form"%>

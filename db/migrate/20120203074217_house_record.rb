@@ -9,7 +9,7 @@ class HouseRecord < ActiveRecord::Migration
       t.string   "FinalWorker",     :limit => 32                                                                           #终审人
       t.string   "EnrolWorker",     :limit => 32                                                                           #初审人
       t.datetime "FinalTime"                                                                                               #终审时间
-      t.string   "Memo",            :limit => 200                                                                          #
+      t.string   "Memo",            :limit => 256                                                                          #
       t.string   "ApprovalContext", :limit => 200                                                                          #
       t.integer  "BizSource",       :limit => 8                                                                            #业务来源
       t.string   "ProcessMessage",  :limit => 800                                                                          #
