@@ -5,4 +5,61 @@ zh-CN:
       build: 搂幢
       project: 项目
     attributes:
+      house:
+       HouseNO: 房号
+       BuildID: 幢号
+       HouseArea: 建筑面积
+       TempArea: 备案面积
+       UseArea: 套内面积
+       CommArea: 公共面积
+       ShineArea: 阳台面积
+       LoftArea: 阁楼面积
+       CommParam: 分摊系数
+       PrivateArea: 私有面积
+       SellSumPrice: 销售总价
+       SumPrice: 总价值
+       LoftPrice: 阁楼价格
+       SellPrice: 销售价格
+       HouseState: 房屋状态
+       HouseUnit: 房屋单元数
+       HouseOrder: 房号
+       InFloor: 所在层
+       InFloorName: 所在层名称
+       DoorNo: 门牌号
+       HouseType: 房屋类型
+       UseType: 设计用途
+       HousePorperty: 产别
+       Structure: 结构
+       KnotSize: 套型
+     
       build:
+        NO: 楼幢编号
+        BuildNO: 幢号
+        BuildName: 楼幢名称
+        ProjectID: 项目索引
+        SectionID: 小区索引
+        DoorNO: 门牌号
+        UnintCount: 单元数
+        FloorCount: 层数
+        BuildAddress: 坐落
+        SumCount: 总套数
+        Area: 总面积
+        SumArea: 预售面积
+        HomeArea: 住宅面积
+        UNHomeArea: 非住宅面积
+        NetPointArea: 网点面积
+        DepotArea: 库房面积
+        OfficeArea: 办公面积
+        OtherArea: 其它面积
+        OtherCount: 其它套数
+        Memo: 备注
+        Lng: 长度
+        Lat: Lat
+        Zoom: 缩放？
+        MapNO: 图号
+        BlockNO: 丘号
+        BuildType: 建筑类型
+        CompositeArea: CompositeArea
+        FirmlyPower: FirmlyPower
+        FirmlyDate: FirmlyDate
+        Structure: 结构

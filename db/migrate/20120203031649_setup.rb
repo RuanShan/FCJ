@@ -756,7 +756,7 @@ class Setup < ActiveRecord::Migration
       t.string "Memo",         :limit => 200 #备注
     end
   
-    create_table "section", :primary_key => "ID", :force => true do |t|
+    create_table "section", :primary_key => "id", :force => true do |t|
       t.string   "NO",         :limit => 20,  :null => false           #编号
       t.string   "DistrictID", :limit => 32  #城区索引
       t.string   "Name",       :limit => 50,  :null => false           #名称
@@ -855,7 +855,7 @@ class Setup < ActiveRecord::Migration
     drop_table :projectcard
     drop_table :projectcreateprocess
     drop_table :provincecity        #省市
-    drop_table :section#小区
+    drop_table :section             #小区
     drop_table :smsubcompany        #
     drop_table :companies        #  公司抽象
     
