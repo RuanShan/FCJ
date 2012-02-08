@@ -1,0 +1,8 @@
+zh-CN:
+  activerecord:
+    models:
+      house: 房屋
+      build: 搂幢
+      project: 项目
+    attributes:
+      build:
