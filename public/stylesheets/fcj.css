@@ -167,14 +167,13 @@ div.block{
 }
 #content .left_part
 {
-  width:150px;
-  padding:5px;
+  width:180px;
   border-right:solid 1px #8BA0BC;
   overflow: auto;
 }
 #content .center_part
 {
-  left:160px;
+  left:180px;
   overflow: auto;
 }
 #welcome{

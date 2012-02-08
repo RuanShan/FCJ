@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "keycode",         :limit => 12
   end
 
-  create_table "companies", :primary_key => "ID", :force => true do |t|
+  create_table "companies", :force => true do |t|
     t.string   "NO",              :limit => 50,                                 :null => false
     t.string   "Name",            :limit => 100,                                :null => false
     t.string   "OwnerName",       :limit => 20

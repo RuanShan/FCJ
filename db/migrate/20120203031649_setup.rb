@@ -785,7 +785,7 @@ class Setup < ActiveRecord::Migration
     add_index "smsubcompany", ["Section"], :name => "FK_SMSUBCOM_REFERENCE_SECTION"
 
       
-    create_table "companies", :primary_key => "ID", :force => true do |t|
+    create_table "companies", :primary_key => "id", :force => true do |t|
       t.string   "NO", :limit => 50,       :null => false   #备案编号
       t.string   "Name",            :limit => 100,      :null => false #公司名称
       t.string   "OwnerName",       :limit => 20          #法人姓名
