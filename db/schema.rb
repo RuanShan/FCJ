@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "FinalWorker",     :limit => 32
     t.string   "EnrolWorker",     :limit => 32
     t.datetime "FinalTime"
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.string   "ApprovalContext", :limit => 200
     t.integer  "BizSource",       :limit => 8
     t.string   "ProcessMessage",  :limit => 800
@@ -100,9 +100,10 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "Name",            :limit => 100,                                :null => false
     t.string   "OwnerName",       :limit => 20
     t.string   "OwnerCard",       :limit => 50
-    t.integer  "type",            :limit => 8
+    t.string   "type",            :limit => 20
     t.string   "Manager",         :limit => 20
-    t.integer  "GroupLeve",       :limit => 8
+    t.integer  "D_GroupLeve",     :limit => 8
+    t.integer  "D_CompanyType",   :limit => 8
     t.string   "E_Mail",          :limit => 50
     t.string   "PhoneNumber",     :limit => 200
     t.string   "Fax",             :limit => 50
@@ -112,7 +113,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "LicenseNO",       :limit => 100
     t.decimal  "RegMoney",                       :precision => 18, :scale => 3
     t.datetime "DateTo"
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.string   "OwnerID",         :limit => 32
     t.string   "Icon",            :limit => 100
     t.string   "Password",        :limit => 50
@@ -169,7 +170,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "LicenseNO",       :limit => 100
     t.decimal  "RegMoney",                       :precision => 18, :scale => 3
     t.datetime "DateTo"
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.string   "OwnerID",         :limit => 32
     t.string   "Icon",            :limit => 100
     t.string   "Password",        :limit => 50
@@ -318,7 +319,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "ReportLocation",  :limit => 100
     t.string   "NestingLocation", :limit => 100
     t.datetime "UpdateDate"
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
   end
 
   create_table "dgrole", :primary_key => "ID", :force => true do |t|
@@ -441,7 +442,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "NoGoodAction",    :limit => 100
     t.string   "Complaints",      :limit => 100
     t.integer  "LicenseLeve",     :limit => 8
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
   end
 
   add_index "ecemployee", ["NO"], :name => "AK_KEY_2_ECEMPLOY", :unique => true
@@ -480,7 +481,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "Companylicense",  :limit => 20
     t.datetime "RecordDate"
     t.string   "Icon",            :limit => 100
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.string   "Password",        :limit => 50
     t.boolean  "IsOff",                                                         :default => false
     t.datetime "OffDate"
@@ -844,7 +845,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "Fax",             :limit => 50
     t.string   "E_Mail",          :limit => 50
     t.string   "Icon",            :limit => 100
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.string   "Password",        :limit => 50
     t.string   "PostCode",        :limit => 50
     t.boolean  "IsOff"
@@ -892,7 +893,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string   "Address",         :limit => 100
     t.string   "CompanyNo",       :limit => 10
     t.string   "Companylicense",  :limit => 20
-    t.string   "Memo",            :limit => 200
+    t.string   "Memo",            :limit => 256
     t.datetime "RecordDate"
     t.string   "Icon",            :limit => 100
     t.string   "Password",        :limit => 50

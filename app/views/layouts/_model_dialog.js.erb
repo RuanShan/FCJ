@@ -1,6 +1,5 @@
-center_container('model_dialog');     
-       
-$('#model_dialog').show("scale")
 
 $('#model_dialog').replaceWith(<%= raw (render :partial=>"/layouts/model_dialog.html.erb").to_json%>);
+center_container('model_dialog');            
+$('#model_dialog').show()
 

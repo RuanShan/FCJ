@@ -184,8 +184,9 @@ div.block{
 }
 .dialog{
  position:absolute;
-  width:740px;
+  /*width:740px;
   height:438px;
+  */  
   background-color:#ffffff;
   border:1px solid #909AA6;
   overflow: auto;
@@ -229,7 +230,9 @@ form.new  label
   width: 80px;
   text-align:right;
 }
-form.new  input[type="text"]
-{
-  width: 140px;
-}
+form.new  input{  width: 140px; }
+form.new  input.single_entry, form.new  textarea.single_entry
+{  width: 340px; }
+
+form.new  textarea.single_entry{  height:50px; }
+form.new  label.text_area{  vertical-align:top; }

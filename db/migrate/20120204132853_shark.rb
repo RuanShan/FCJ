@@ -125,7 +125,7 @@ class Shark < ActiveRecord::Migration
         t.string   "ReportLocation",  :limit => 100
         t.string   "NestingLocation", :limit => 100
         t.datetime "UpdateDate"
-        t.string   "Memo",            :limit => 200
+        t.string   "Memo",            :limit => 256
       end
     
       create_table "dgrole", :primary_key => "ID", :force => true do |t|

@@ -1,4 +1,8 @@
-  <% i=0%>
+  <% 
+     max_line_fields=3
+     ch= @object_class.columns_hash
+logger.debug ch.class
+  %>
     <% if @object.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@object.errors.count, "error") %> prohibited this <%=@object_class.model_name.human%> from being saved:</h2>
@@ -10,12 +14,33 @@
       </ul>
     </div>
   <% end %>
-  
-  <% @object_class.new_cols.size.fdiv(3).ceil.times{ |i| %>
+<%
+%> 
+<% for cols in @cols_groups %>   
+  <% cols.size.fdiv(max_line_fields).ceil.times{ |i| %>
       <p>
-  <%   for col in @object_class.new_cols.slice(i*3,3)%>
-      <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col) %>
-      <%= text_field_tag "object[#{col}]",@object[col]  %>   
+    <% for col in cols.slice(i*max_line_fields,max_line_fields)%>
+      <% controll_class =  ( cols.size==1 ? "single_entry" : "")         
+         controll_class += " text_area" if ch[col.to_s].type == :string and ch[col.to_s].limit >200
+      %>
+      <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col), :class=>controll_class %>
+      <% if  ch[col.to_s].type == :string and ch[col.to_s].limit >200 %>
+        <%= text_area "object", col, :class=>controll_class%>      
+      <% elsif  ch[col.to_s].type == :boolean %>
+        <%= check_box "object", col, :class=>controll_class  %>      
+      <% elsif  ch[col.to_s].type == :datetime %>
+        <%= text_field_tag "object[#{col}]",@object[col], :class=>"date_field #{controll_class}"  %>
+      <% else #:decimal,:integer, :string  %>
+        <%= text_field "object",col, :class=>controll_class %>            
+      <% end %>   
     <% end %>
       </p>
   <% }%>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $( "input.date_field" ).datepicker();
+  });
+
+</script>
