@@ -85,7 +85,7 @@ class Setup < ActiveRecord::Migration
       t.string   "LicenseNO",       :limit => 100         #营业执照号
       t.decimal  "RegMoney",          :precision => 18, :scale => 3    #注册资金？
       t.datetime "DateTo"       #？
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
       t.string   "OwnerID",         :limit => 32          #法人索引？证件？
       t.string   "Icon",            :limit => 100         #图标？
       t.string   "Password",        :limit => 50          #密码
@@ -142,7 +142,7 @@ class Setup < ActiveRecord::Migration
       t.string   "NoGoodAction",    :limit => 100         #不良行为
       t.string   "Complaints",      :limit => 100         #举报投诉
       t.integer  "LicenseLeve",     :limit => 8           #证书等级
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
     end
   
     add_index "ecemployee", ["NO"], :name => "AK_KEY_2_ECEMPLOY", :unique => true
@@ -181,7 +181,7 @@ class Setup < ActiveRecord::Migration
       t.string   "Companylicense",  :limit => 20          #营业执照号？
       t.datetime "RecordDate"   #备案日期
       t.string   "Icon",            :limit => 100         #图标
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
       t.string   "Password",        :limit => 50          #密码
       t.boolean  "IsOff",     :default => false           #是否注销
       t.datetime "OffDate"      #注销日期
@@ -372,7 +372,7 @@ class Setup < ActiveRecord::Migration
       t.string   "Fax",:limit => 50          #传真
       t.string   "E_Mail",          :limit => 50          #电子邮箱
       t.string   "Icon",            :limit => 100         #图标
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
       t.string   "Password",        :limit => 50          #密码
       t.string   "PostCode",        :limit => 50          #邮编
       t.boolean  "IsOff"        #是否注销
@@ -420,7 +420,7 @@ class Setup < ActiveRecord::Migration
       t.string   "Address",         :limit => 100         #地址
       t.string   "CompanyNo",       :limit => 10          #机构代码证号
       t.string   "Companylicense",  :limit => 20          #营业执照号
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
       t.datetime "RecordDate"   #备案日期
       t.string   "Icon",            :limit => 100         #图标
       t.string   "Password",        :limit => 50          #密码
@@ -483,10 +483,10 @@ class Setup < ActiveRecord::Migration
       t.string   "Complaints",   :limit => 100            #举报投诉
       t.string   "LicenseNO",    :limit => 100            #证书编号
       t.string   "TaxLicenseNO", :limit => 100            #税务代码证
-      t.string   "CompanyCode",  :limit => 100            #？
-      t.integer  "CompanyType",  :limit => 8 #机构类型？
+      t.string   "CompanyCode",  :limit => 100            #机构代码证
+      t.integer  "CompanyType",  :limit => 8 #单位性质
       t.decimal  "RegMoney",       :precision => 13, :scale => 3       #注册资金？
-      t.integer  "GroupLeve",    :limit => 8 #组等级？
+      t.integer  "GroupLeve",    :limit => 8 #资质等级
       t.string   "WebAddress",   :limit => 100            #网站
       t.datetime "DateTo"       #？
       t.string   "Manager",      :limit => 20#经理
@@ -756,7 +756,7 @@ class Setup < ActiveRecord::Migration
       t.string "Memo",         :limit => 200 #备注
     end
   
-    create_table "section", :primary_key => "ID", :force => true do |t|
+    create_table "section", :primary_key => "id", :force => true do |t|
       t.string   "NO",         :limit => 20,  :null => false           #编号
       t.string   "DistrictID", :limit => 32  #城区索引
       t.string   "Name",       :limit => 50,  :null => false           #名称
@@ -785,14 +785,15 @@ class Setup < ActiveRecord::Migration
     add_index "smsubcompany", ["Section"], :name => "FK_SMSUBCOM_REFERENCE_SECTION"
 
       
-    create_table "companies", :primary_key => "ID", :force => true do |t|
+    create_table "companies", :primary_key => "id", :force => true do |t|
       t.string   "NO", :limit => 50,       :null => false   #备案编号
       t.string   "Name",            :limit => 100,      :null => false #公司名称
       t.string   "OwnerName",       :limit => 20          #法人姓名
       t.string   "OwnerCard",       :limit => 50          #法人证件
-      t.integer  "type",     :limit => 8                  #公司类型
+      t.string   "type",     :limit => 20                  #类型
       t.string   "Manager",         :limit => 20          #公司经理
-      t.integer  "GroupLeve",       :limit => 8           #组等级？
+      t.integer  "D_GroupLeve",       :limit => 8           #资质等级
+      t.integer  "D_CompanyType",       :limit => 8         #单位性质
       t.string   "E_Mail",          :limit => 50          #电子邮箱
       t.string   "PhoneNumber",     :limit => 200         #电话号码
       t.string   "Fax",:limit => 50          #传真
@@ -802,7 +803,7 @@ class Setup < ActiveRecord::Migration
       t.string   "LicenseNO",       :limit => 100         #营业执照号
       t.decimal  "RegMoney",          :precision => 18, :scale => 3    #注册资金？
       t.datetime "DateTo"       #？
-      t.string   "Memo",            :limit => 200         #备注
+      t.string   "Memo",            :limit => 256         #备注
       t.string   "OwnerID",         :limit => 32          #法人索引？证件？
       t.string   "Icon",            :limit => 100         #图标？
       t.string   "Password",        :limit => 50          #密码
@@ -854,7 +855,7 @@ class Setup < ActiveRecord::Migration
     drop_table :projectcard
     drop_table :projectcreateprocess
     drop_table :provincecity        #省市
-    drop_table :section#小区
+    drop_table :section             #小区
     drop_table :smsubcompany        #
     drop_table :companies        #  公司抽象
     

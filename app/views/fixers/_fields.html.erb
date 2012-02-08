@@ -1,0 +1,20 @@
+<%
+  # locals   objects
+object_class =  objects.first.class
+%>
+
+    <table>
+      <tr>
+      <%for col in object_class.list_cols%>
+        <th><%=object_class.human_attribute_name(col) %></th>    
+      <%end%>
+      </tr>
+    
+    <% objects.each do |obj| %>
+      <tr>
+      <%for col in object_class.list_cols%>
+        <td><%=h obj[col] %></td>
+      <%end%>
+      </tr>
+    <% end %>
+    </table>

@@ -125,7 +125,7 @@ class Shark < ActiveRecord::Migration
         t.string   "ReportLocation",  :limit => 100
         t.string   "NestingLocation", :limit => 100
         t.datetime "UpdateDate"
-        t.string   "Memo",            :limit => 200
+        t.string   "Memo",            :limit => 256
       end
     
       create_table "dgroles", :primary_key => "id", :force => true do |t|
@@ -178,18 +178,18 @@ class Shark < ActiveRecord::Migration
         t.string "Comment",    :limit => 100
       end
     
-      create_table "dgwordbook", :primary_key => "ID", :force => true do |t|
+      create_table "dgwordbook", :primary_key => "id", :force => true do |t|
         t.string  "Key",      :limit => 50,  :null => false
-        t.string  "Value",    :limit => 100, :null => false
-        t.integer "TypeID",   :limit => 8,   :null => false
+        t.string  "Value",    :limit => 100, :null => false #名称
+        t.integer "TypeID",   :limit => 8,   :null => false #字典类型索引
         t.string  "Memo",     :limit => 100
         t.integer "Priority",                :null => false
       end
     
       add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
     
-      create_table "dgwordbooktype", :primary_key => "ID", :force => true do |t|
-        t.string  "TypeName", :limit => 50,  :null => false
+      create_table "dgwordbooktype", :primary_key => "id", :force => true do |t|
+        t.string  "TypeName", :limit => 50,  :null => false #字典类型
         t.boolean "IsSystem",                :null => false
         t.string  "Memo",     :limit => 100
       end

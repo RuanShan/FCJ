@@ -1,11 +1,11 @@
 <div id="lftnav">
   <%for fg in @function_groups%>
-  <% next if fg.dgfunctions.empty?%>
   <h3><a href="#"><%= fg[:GroupName]%></a></h3>
   <ul>
     <%for f in fg.dgfunctions%>
+      <% aclass = ( f==@function ? "select": "" ) %>
       <li>
-             <a href="<%=f[:LocateName]%>"> <%= f[:Name]%> </a>
+        <%= link_to f[:Name], "#{f[:LocateName]}?function_id=#{f.id}", :class=>aclass %>
       </li>
     <%end%>
   </ul>
@@ -14,6 +14,6 @@
 </div>
 <script>
   $(function() {
-    $( "#lftnav" ).accordion();
+    $( "#lftnav" ).accordion({ active: <%=@active_function_index%> });
   });
 </script>

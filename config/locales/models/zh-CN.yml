@@ -14,6 +14,8 @@ zh-CN:
       iemployee: 中介从业人员
       financialinfo: 金融机构
       ownergroup: 业主
+      dgwordbooktype: 字典类型
+      dgwordbook: 字典
     attributes:
       district:
         NO: 字号
@@ -34,9 +36,9 @@ zh-CN:
         Name: 公司名称
         OwnerName: 法人姓名
         OwnerCard: OwnerCard
-        type: 公司类型
         Manager: 公司经理
-        GroupLeve: 资质等级
+        D_CompanyType: 单位性质
+        D_GroupLeve: 资质等级
         E_Mail: 电子邮箱
         PhoneNumber: 电话号码
         Fax: 传真
@@ -60,4 +62,8 @@ zh-CN:
         ChildrenCount: 分支机构数量
         ChildrenCompany: 分支机构
         RecordDate: 登记时间
-   
+      dgwordbooktype:
+        TypeName: 字典类型
+        Memo: 备注
+      dgwordbook:
+        Value: 名称

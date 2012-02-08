@@ -6,7 +6,14 @@ class ApplicationController < ActionController::Base
   def init
     
     @function_groups = Dgfuncgroup.all(:include=>:dgfunctions,:order=>"Priority")
+    @function_groups.delete_if{|fg| fg.dgfunctions.empty?}
 
+    if params[:function_id].present?
+      @function = Dgfunction.first(:conditions=>["id=?",params[:function_id]])      
+    end
+    @function||= Dgfunction.first
+    
+    @active_function_index = @function_groups.index(@function.dgfuncgroup)      
   end
   
   # usage: popup a messagebox, content is message in ecs_message

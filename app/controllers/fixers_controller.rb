@@ -5,6 +5,31 @@ class FixersController < ApplicationController
   def init_class
     class_string=params[:class]
     @object_class = class_string.classify().constantize()    
+    
+    # support cols groups. list cols by group, only for new|edit
+    @cols_groups = []
+    if @object_class.new_cols.flatten != @object_class.new_cols
+      agroup =[]
+      for col in @object_class.new_cols
+        unless col.kind_of? ::Array
+          agroup << col
+          next
+        else
+          unless agroup.empty?
+            @cols_groups << agroup.dup
+            agroup.clear
+          end
+          @cols_groups << col          
+        end        
+      end
+      # handle cols last x.
+      unless agroup.empty?
+        @cols_groups << agroup.dup
+      end      
+    else
+      @cols_groups << @object_class.new_cols
+    end
+    
   end
 # maintain all data in this controller
   def list
@@ -62,6 +87,6 @@ class FixersController < ApplicationController
   
   #maintain dict
   def dict
-    
+    @objects = @object_class.all(:include=>:dgwordbooks)
   end
 end

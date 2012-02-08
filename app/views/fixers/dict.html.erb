@@ -1,0 +1,20 @@
+  <div class="absolute_tbl" style="width:100px;overflow:auto;">
+    <div>
+    <%=@object_class.human_attribute_name('TypeName') %></div>
+    <ul>
+    <% for wbt in @objects%>
+     <li> <a> <%=wbt[:TypeName]%> </a></li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="absolute_trb" style="left:100px;">
+    <% for wbt in @objects%>
+    <div>
+      <%=wbt[:TypeName]%>  |add, update, add word
+    </div>
+    <div>
+      <% next if wbt.dgwordbooks.empty? %>
+      <%= render :partial=>"fields", :locals=>{:objects=>wbt.dgwordbooks} %>
+    </div>
+    <% end %>
+  </div>
