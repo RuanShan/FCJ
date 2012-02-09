@@ -3,7 +3,9 @@ class FixersController < ApplicationController
   attr_accessor :object_class
   
   def init_class
-    class_string=(params[:class] == "Dgorganise" and params[:action] == "list") ? "Dgemployee" : params[:class]
+    class_string=params[:class]
+    #decide manager class.
+    
     @object_class = class_string.classify().constantize()    
     
     # support cols groups. list cols by group, only for new|edit
@@ -33,12 +35,17 @@ class FixersController < ApplicationController
   end
 # maintain all data in this controller
   def list
-    @objects = @object_class.all()
+    @objects = @object_class.all()    
   end
   
   def new
     # action :create may call this action
-    @object ||= @object_class.new
+    if @object.nil?
+      @object = @object_class.new()
+      if params[:object]
+        @object.attributes = params[:object]
+      end
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.js  { render_dialog("new.html.erb") }
@@ -58,7 +65,8 @@ class FixersController < ApplicationController
     object_params = params[:object]    
     @object = @object_class.new(object_params)
     if @object.save
-      redirect_back_or_default(:action=>"list")      
+      action= @object_class.manager_class == @object_class ? "list" : @object_class.manager_class
+      redirect_back_or_default(:action=>action)
     else
       new
     end
@@ -69,7 +77,8 @@ class FixersController < ApplicationController
     object_params = params[:object]    
     @object = @object_class.find(params[:id])
     if @object.update_attributes(object_params)
-      redirect_back_or_default(:action=>"list")      
+      action= @object_class.manager_class == @object_class ? "list" : @object_class.manager_class
+      redirect_back_or_default(:action=>action)
     else
       edit
     end
@@ -86,15 +95,14 @@ class FixersController < ApplicationController
   end
   
   #maintain dict
-  def dict
+  def dgwordbooktype
     @objects = @object_class.all(:include=>:dgwordbooks)
     @objects.delete_if{|dgt| dgt.dgwordbooks.empty? }
 
   end
 
-  #dgemployee
-  def employee
+  def dgorganise
     @objects = @object_class.all()
+    @current_organise_id = params[:selected_id].nil? ? "0" : params[:selected_id]
   end
-
 end

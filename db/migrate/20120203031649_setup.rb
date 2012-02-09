@@ -1,7 +1,7 @@
 class Setup < ActiveRecord::Migration
   def self.up
     #楼幢
-    create_table "build", :primary_key => "ID", :force => true do |t|
+    create_table "build", :primary_key => "id", :force => true do |t|
       t.string   "NO",            :limit => 50,   :null => false       #楼幢编号         
       t.string   "BuildNO",       :limit => 50, :null => false         #幢号
       t.string   "BuildName",     :limit => 100,:null => false         #楼幢名称
@@ -68,7 +68,7 @@ class Setup < ActiveRecord::Migration
     add_index "demployee", ["NO"], :name => "AK_KEY_2_DEMPLOYE", :unique => true
     add_index "demployee", ["Owner"], :name => "FK_DEMPLOYE_REFERENCE_OWNERINF"
   
-    create_table "developer", :primary_key => "ID", :force => true do |t|
+    create_table "developer", :primary_key => "id", :force => true do |t|
       t.string   "NO", :limit => 50,       :null => false   #备案编号
       t.string   "Name",            :limit => 100,      :null => false #公司名称
       t.string   "OwnerName",       :limit => 20          #法人姓名
@@ -210,7 +210,7 @@ class Setup < ActiveRecord::Migration
   
     add_index "financialinfo", ["No"], :name => "AK_KEY_2_FINANCIA", :unique => true
   
-    create_table "house", :primary_key => "ID", :force => true do |t|
+    create_table "house", :primary_key => "id", :force => true do |t|
       t.string   "NO",       :limit => 50, :null => false
       t.string   "HouseNO",  :limit => 50    #房屋编号
       t.string   "BuildID",  :limit => 32, :null => false #幢号
@@ -632,7 +632,7 @@ class Setup < ActiveRecord::Migration
   
     add_index "porjectcardandbuild", ["Build"], :name => "FK_PORJECTC_REFERENCE_BUILD"
   
-    create_table "project", :primary_key => "ID", :force => true do |t|
+    create_table "project", :primary_key => "id", :force => true do |t|
       t.string   "NO",    :limit => 100,            :null => false     #编号
       t.string   "Name",  :limit => 50,:null => false     #名称
       t.string   "SectionID",          :limit => 32       #小区索引？

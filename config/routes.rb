@@ -8,8 +8,8 @@ Fcj::Application.routes.draw do
   match '/fixers/update/:class/:id' => 'fixers#update'
   match '/fixers/destroy/:class/:id' => 'fixers#destroy'
   match '/fixers/create/:class' => 'fixers#create'
-  match '/fixers/dict/:class' => 'fixers#dict'
-  match '/fixers/employee/:class' => 'fixers#employee'
+  match '/fixers/dgwordbooktype/:class' => 'fixers#dgwordbooktype'
+  match '/fixers/dgorganise/:class' => 'fixers#dgorganise'
   match ':controller/:action'
   
   # Sample of regular route:

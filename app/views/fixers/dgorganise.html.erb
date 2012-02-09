@@ -1,10 +1,7 @@
   <div style="height:50px;"> subheader
   </div>
   <% orgs = nested_set_options(Dgorganise) {|i, level| "#{'-' * level} #{i.Name}" }%>
-  <%= form_tag '', :remote => true, :id=>"organise_form" do %>
     <div id="organise_tree" class="absolute_tbl" style="top:50px;width:130px;overflow:auto;">
-      <%= select_tag 'hidden|parent_id', options_for_select(nested_set_options(Dgorganise) {|i, level| "#{'-' * level} #{i.Name}" }),
-          :onchange=>"/fixers/list/Dgemployee"  %>
 
       <div>  <%=@object_class.human_attribute_name('Name') %>
       </div>
@@ -13,17 +10,17 @@
            <li data-section-id="<%=org[1]%>"> <a> <%=org[0]%> </a></li>
           <% end %>
         </ul>
-        <input type="hidden" name="hidden|parent_id" />
+        <input type="hidden" name="selected" />
 
     </div>
     <div id="employee_list" class="list_fixer absolute_trb" style="top:50px;left:130px;overflow:auto;">
       <% for org in orgs %>
         <% organise = Dgorganise.find(org[1]) %>
-      <div >
+      <div id="belongsto_<%=org[1] %>">
         <div>
           <%=organise[:Name]%>
-          <%=link_to (t :create), '',:onclick => "submitForm('#organise_form','/fixers/new/Dgorganise');return false;" %>
-          <%=link_to (t :update), '',:onclick => "submitForm('#organise_form','/fixers/update/Dgorganise');return false;" %>
+          <%=link_to (t :create), {:controller=> "fixers",:action=>"new",:class=>"Dgorganise", :selected_id=>org[1], :object=>{:dgorganiseID=>org[1]}}, :remote=>true %>
+          <%=link_to (t :update), {:controller=> "fixers",:action=>"edit",:class=>"Dgorganise", :selected_id=>org[1], :id=>org[1]}, :remote=>true %>
         </div>
         <div>
           <%= render :partial=>"fields", :locals=>{:objects=>organise.dgemployees} %>
@@ -31,10 +28,11 @@
       </div>
       <% end %>
     </div>
-  <% end %>
 
 <script type="text/javascript">
 $(document).ready(function() {
+ select_div("#belongsto_"+ "<%=@current_organise_id%>");
   add_list_feature("#organise_tree li");
+
 })
 </script>

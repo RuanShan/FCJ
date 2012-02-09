@@ -43,7 +43,7 @@ class Shark < ActiveRecord::Migration
       add_index "dgbizfile", ["EmployeeID"], :name => "FK_DGBIZFIL_REFERENCE_DGEMPLOY"
     
       create_table "dgemployees", :primary_key => "id", :force => true do |t|
-        t.string   "Org_ID",      :limit => 32
+        t.string   "dgorganiseID",      :limit => 32
         t.string   "NO",          :limit => 50,                    :null => false
         t.string   "Name",        :limit => 20,                    :null => false
         t.integer  "Sex"
@@ -60,7 +60,7 @@ class Shark < ActiveRecord::Migration
       end
     
       add_index "dgemployees", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
-      add_index "dgemployees", ["Org_ID"], :name => "Relationship_6_FK"
+      add_index "dgemployees", ["dgorganiseID"], :name => "Relationship_6_FK"
       add_index "dgemployees", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
     
       create_table "dgemployeeroles", :id => false, :force => true do |t|
@@ -95,7 +95,7 @@ class Shark < ActiveRecord::Migration
     
       create_table "dgorganises", :primary_key => "id", :force => true do |t|
         t.string  "NO",       :limit => 50,  :null => false
-        t.integer :parent_id
+        t.integer :dgorganiseID
         t.integer :lft
         t.integer :rgt
         t.string  "Name",     :limit => 100, :null => false
@@ -104,7 +104,7 @@ class Shark < ActiveRecord::Migration
       end
     
       add_index "dgorganises", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
-      add_index "dgorganises", ["parent_id"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
+      add_index "dgorganises", ["dgorganiseID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
     
       create_table "dgrateitems", :primary_key => "ID", :force => true do |t|
         t.string  "Name",        :limit => 50,  :null => false
@@ -190,6 +190,7 @@ class Shark < ActiveRecord::Migration
       add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
     
       create_table "dgwordbooktype", :primary_key => "id", :force => true do |t|
+        t.string  "key", :limit => 50,  :null => false #字典类型KEY, 即引用字典的列名. 值为 dgwordbook id.
         t.string  "TypeName", :limit => 50,  :null => false #字典类型
         t.boolean "IsSystem",                :null => false
         t.string  "Memo",     :limit => 100
