@@ -4,10 +4,10 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Fcj</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery.min" %>
   <%= javascript_include_tag "jqueryui.min" %>
   <%= javascript_include_tag "rails" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -23,9 +23,9 @@
         <%= yield %>
       </div>
     </div>
-  <div id="footer" class="absolute_rbl">
-    <%= render :partial=>"/layouts/footer"%>
-  </div>
+    <div id="footer" class="absolute_rbl">
+      <%= render :partial=>"/layouts/footer"%>
+    </div>
   </div>
   <%= render :partial => "/layouts/model_dialog" %>
 

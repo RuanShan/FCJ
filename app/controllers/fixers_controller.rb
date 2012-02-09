@@ -88,6 +88,8 @@ class FixersController < ApplicationController
   #maintain dict
   def dict
     @objects = @object_class.all(:include=>:dgwordbooks)
+    @objects.delete_if{|dgt| dgt.dgwordbooks.empty? }
+
   end
 
   #dgemployee

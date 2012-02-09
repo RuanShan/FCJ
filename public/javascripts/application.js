@@ -8,6 +8,28 @@ function center_container(ele_id){
   ele.css("left", ($(window).width() - ele.width()) / 2 + $(window).scrollLeft() + "px");
 }
 
+function add_list_feature(selector){
+  /*
+   * dom is like
+   *
+   *  <div> <ul>  <li> a</li>  </ul>
+   *        <input> 
+   *  </div>
+   *  <div>
+   *    <div> div1  </div>
+   *    <div> div2  </div>
+   *  </div>
+   */
+  
+  
+$(selector).click(function(){
+    $(this).parent().children().removeClass('selected');
+    $(this).addClass('selected'); 
+    $(this).parent().parent().next().children().removeClass('selected');
+    $(this).parent().parent().next().children().eq($(this).index()).addClass('selected');
+    $(this).parent().siblings('input').val($(this).attr('data-section-id'))
+  });
+}
 function dialog(op)
 {
   $("#model_dialog").hide()

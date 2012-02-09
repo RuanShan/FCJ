@@ -397,7 +397,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.float    "AddUp"
   end
 
-  create_table "district", :force => true do |t|
+  create_table "districts", :force => true do |t|
     t.string "NO",             :limit => 50,  :null => false
     t.string "Name",           :limit => 100
     t.string "memo",           :limit => 200
@@ -406,7 +406,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string "ProvinceCityID", :limit => 32
   end
 
-  add_index "district", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
+  add_index "districts", ["NO"], :name => "AK_KEY_2_DISTRICT", :unique => true
 
   create_table "doubtbiz", :id => false, :force => true do |t|
     t.string "ID",            :limit => 32,  :null => false
@@ -1261,7 +1261,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string "Business", :limit => 32, :null => false
   end
 
-  create_table "section", :primary_key => "ID", :force => true do |t|
+  create_table "section", :force => true do |t|
     t.string   "NO",         :limit => 20,  :null => false
     t.string   "DistrictID", :limit => 32
     t.string   "Name",       :limit => 50,  :null => false

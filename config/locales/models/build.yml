@@ -63,3 +63,18 @@ zh-CN:
         FirmlyPower: FirmlyPower
         FirmlyDate: FirmlyDate
         Structure: 结构
+        Developer: 开发商
+        Owner: 法人
+        Password: 密码
+        LicenseNO: 证书编号
+        LicenseDateTo: 证书有效日期
+        Phone: 电话
+        Education: 学历
+        isOff: 是否注销
+        CreateDate: 创建时间
+        OffDate: 注销日期
+        GoodAction: 优良行为
+        NoGoodAction: 不良行为
+        Complaints: 举报投诉
+        LicenseLeve: 证书等级
+        Memo: 备注
