@@ -261,12 +261,12 @@ ul.list A:visited {
 ul.list A.here:link,
 ul.list A.here:visited {
 }
-#word_list>div
+.list_fixer>div
 {
   display:none;
 }
 
-#word_list div.selected
+.list_fixer div.selected
 {
   display:block;
 }

@@ -1,3 +1,6 @@
+<% if objects.empty? %>
+    No objects
+<% else %>
 <%
   # locals   objects
 object_class =  objects.first.class
@@ -18,3 +21,4 @@ object_class =  objects.first.class
       </tr>
     <% end %>
     </table>
+<% end %>

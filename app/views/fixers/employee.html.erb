@@ -1,27 +1,40 @@
-<h2>Listing <%=@object_class.model_name.human %></h2>
-<div class="clear-block">
-  <div class="fl">
-  <%= t :search %>
+  <div style="height:50px;"> subheader
   </div>
-  <div class="fr">
-    <%= link_to (t :create), "/fixers/new/#{@object_class.model_name}", :remote=>true %>
-  </div>
-</div>
-  <%=render :partial=>"users/organise_tree"%>
-<table>
-  <tr>
-  <%for col in @object_class.list_cols%>
-    <th><%=@object_class.human_attribute_name(col) %></th>
-  <%end%>
-  </tr>
+  <% orgs = nested_set_options(Dgorganise) {|i, level| "#{'-' * level} #{i.Name}" }%>
+  <%= form_tag '', :remote => true, :id=>"organise_form" do %>
+    <div id="organise_tree" class="absolute_tbl" style="top:50px;width:130px;overflow:auto;">
+      <%= select_tag 'hidden|parent_id', options_for_select(nested_set_options(Dgorganise) {|i, level| "#{'-' * level} #{i.Name}" }),
+          :onchange=>"/fixers/list/Dgemployee"  %>
 
-<% @objects.each do |obj| %>
-  <tr>
-    <%for col in @object_class.list_cols%>
-      <td><%=h obj[col] %></td>
-    <%end%>
-    <td><%= link_to (t :edit), "/fixers/edit/#{@object_class.model_name}/#{obj.id}", :remote=>true %></td>
-    <td><%= link_to (t :destroy), "/fixers/destroy/#{@object_class.model_name}/#{obj.id}", :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+      <div>  <%=@object_class.human_attribute_name('Name') %>
+      </div>
+        <ul class="list">
+          <% for org in orgs%>
+           <li data-section-id="<%=org[1]%>"> <a> <%=org[0]%> </a></li>
+          <% end %>
+        </ul>
+        <input type="hidden" name="hidden|parent_id" />
+
+    </div>
+    <div id="employee_list" class="list_fixer absolute_trb" style="top:50px;left:130px;overflow:auto;">
+      <% for org in orgs %>
+        <% organise = Dgorganise.find(org[1]) %>
+      <div >
+        <div>
+          <%=organise[:Name]%>
+          <%=link_to (t :create), '',:onclick => "submitForm('#organise_form','/fixers/new/Dgorganise');return false;" %>
+          <%=link_to (t :update), '',:onclick => "submitForm('#organise_form','/fixers/update/Dgorganise');return false;" %>
+        </div>
+        <div>
+          <%= render :partial=>"fields", :locals=>{:objects=>organise.dgemployees} %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  add_list_feature("#organise_tree li");
+})
+</script>

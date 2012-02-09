@@ -34,3 +34,9 @@ function dialog(op)
 {
   $("#model_dialog").hide()
 }
+
+function submitForm(form_id, action){
+  var form = $(form_id);
+  form.attr('action',action);
+  form.submit();
+  }

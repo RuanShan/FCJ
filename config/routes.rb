@@ -10,7 +10,7 @@ Fcj::Application.routes.draw do
   match '/fixers/create/:class' => 'fixers#create'
   match '/fixers/dict/:class' => 'fixers#dict'
   match '/fixers/employee/:class' => 'fixers#employee'
-
+  match ':controller/:action'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

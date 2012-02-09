@@ -96,4 +96,5 @@ class FixersController < ApplicationController
   def employee
     @objects = @object_class.all()
   end
+
 end
