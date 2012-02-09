@@ -4,6 +4,8 @@ class FixersController < ApplicationController
   
   def init_class
     class_string=params[:class]
+    #decide manager class.
+    
     @object_class = class_string.classify().constantize()    
     
     # support cols groups. list cols by group, only for new|edit

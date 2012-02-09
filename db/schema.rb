@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,7 +12,7 @@
 
 ActiveRecord::Schema.define(:version => 20120204132853) do
 
-  create_table "build", :primary_key => "ID", :force => true do |t|
+  create_table "build", :force => true do |t|
     t.string   "NO",            :limit => 50,                                                     :null => false
     t.string   "BuildNO",       :limit => 50,                                                     :null => false
     t.string   "BuildName",     :limit => 100,                                                    :null => false
@@ -154,7 +153,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "demployee", ["NO"], :name => "AK_KEY_2_DEMPLOYE", :unique => true
   add_index "demployee", ["Owner"], :name => "FK_DEMPLOYE_REFERENCE_OWNERINF"
 
-  create_table "developer", :primary_key => "ID", :force => true do |t|
+  create_table "developer", :force => true do |t|
     t.string   "NO",              :limit => 50,                                 :null => false
     t.string   "Name",            :limit => 100,                                :null => false
     t.string   "OwnerName",       :limit => 20
@@ -379,6 +378,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
 
   create_table "dgwordbooktype", :force => true do |t|
+    t.string  "key",      :limit => 50,  :null => false
     t.string  "TypeName", :limit => 50,  :null => false
     t.boolean "IsSystem",                :null => false
     t.string  "Memo",     :limit => 100
@@ -522,7 +522,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string "keycode",      :limit => 12
   end
 
-  create_table "house", :primary_key => "ID", :force => true do |t|
+  create_table "house", :force => true do |t|
     t.string   "NO",                    :limit => 50,                                                     :null => false
     t.string   "HouseNO",               :limit => 50
     t.string   "BuildID",               :limit => 32,                                                     :null => false
@@ -1109,7 +1109,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "porjectcardandbuild", ["Build"], :name => "FK_PORJECTC_REFERENCE_BUILD"
 
-  create_table "project", :primary_key => "ID", :force => true do |t|
+  create_table "project", :force => true do |t|
     t.string   "NO",                 :limit => 100,                                                   :null => false
     t.string   "Name",               :limit => 50,                                                    :null => false
     t.string   "SectionID",          :limit => 32

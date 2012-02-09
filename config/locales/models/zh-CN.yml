@@ -16,6 +16,9 @@ zh-CN:
       ownergroup: 业主
       dgwordbooktype: 字典类型
       dgwordbook: 字典
+      house: 房屋
+      build: 搂幢
+      project: 项目      
     attributes:
       district:
         NO: 字号
@@ -67,3 +70,139 @@ zh-CN:
         Memo: 备注
       dgwordbook:
         Value: 名称
+      house:
+       HouseNO: 房号
+       BuildID: 幢号
+       HouseArea: 建筑面积
+       TempArea: 备案面积
+       UseArea: 套内面积
+       CommArea: 公共面积
+       ShineArea: 阳台面积
+       LoftArea: 阁楼面积
+       CommParam: 分摊系数
+       PrivateArea: 私有面积
+       SellSumPrice: 销售总价
+       SumPrice: 总价值
+       LoftPrice: 阁楼价格
+       SellPrice: 销售价格
+       HouseState: 房屋状态
+       HouseUnit: 房屋单元数
+       HouseOrder: 房号
+       InFloor: 所在层
+       InFloorName: 所在层名称
+       DoorNo: 门牌号
+       HouseType: 房屋类型
+       UseType: 设计用途
+       HousePorperty: 产别
+       Structure: 结构
+       KnotSize: 套型
+     
+      build:
+        NO: 楼幢编号
+        BuildNO: 幢号
+        BuildName: 楼幢名称
+        ProjectID: 项目索引
+        SectionID: 小区索引
+        DoorNO: 门牌号
+        UnintCount: 单元数
+        FloorCount: 层数
+        BuildAddress: 坐落
+        SumCount: 总套数
+        Area: 总面积
+        SumArea: 预售面积
+        HomeArea: 住宅面积
+        UNHomeArea: 非住宅面积
+        NetPointArea: 网点面积
+        DepotArea: 库房面积
+        OfficeArea: 办公面积
+        OtherArea: 其它面积
+        OtherCount: 其它套数
+        Memo: 备注
+        Lng: 长度
+        Lat: Lat
+        Zoom: 缩放？
+        MapNO: 图号
+        BlockNO: 丘号
+        BuildType: 建筑类型
+        CompositeArea: CompositeArea
+        FirmlyPower: FirmlyPower
+        FirmlyDate: FirmlyDate
+        Structure: 结构
+        Developer: 开发商
+        Owner: 法人
+        Password: 密码
+        LicenseNO: 证书编号
+        LicenseDateTo: 证书有效日期
+        Phone: 电话
+        Education: 学历
+        isOff: 是否注销
+        CreateDate: 创建时间
+        OffDate: 注销日期
+        GoodAction: 优良行为
+        NoGoodAction: 不良行为
+        Complaints: 举报投诉
+        LicenseLeve: 证书等级
+        Memo: 备注
+      project:
+        NO: 编号
+        Name: 名称
+        SectionID: 小区索引
+        DeveloperID: 开发商索引
+        Address: 地址
+        OpenDate: 开盘时间
+        CheckDate: 审批时间
+        BuildSize: 建筑规模
+        BuildCount: 楼幢数
+        InvestMoney: 总投资额
+        FinishDate: 结束时间
+        Area: 总面积
+        SumArea: 预售面积
+        HomeArea: 住宅面积
+        UNHomeArea: 非住宅面积
+        NetPointArea: 网点面积
+        OfficeArea: 办公面积
+        DepotArea: 库房面积
+        CommonArea: 共建面积
+        OtherArea: 其它面积
+        SellCount: 预售总套数
+        HomeCount: 住宅套数
+        UNHomeCount: 非住宅套数
+        NetPointCount: 网点套数
+        OfficeCount: 办公套数
+        DepotCount: 库房套数
+        CommonCount: 共建套数
+        OtherCount: 其它套数
+        HouseBeginPrice: 住宅起价
+        HouseAvePrice: 住宅均价
+        OtherBeginPrice: 非住宅起价
+        OtherHouseAvePrice: 非住宅均价
+        NetPointBeginPrice: 网点起价
+        NetPointAvePrice: 网点均价
+        OfficeBeginPrice: 办公起价
+        OfficeAvePrice: 办公均价
+        DepotBeginPrice: 库房起价
+        DepotAvePrice: 库房均价
+        OtherPrice: 其他价格
+        Phone: 电话
+        USLLicence: 建设用地规划许可证
+        BCLicence: 建设施工许可证
+        PClicence: 工程规划许可证
+        JWLicence: 计委批文
+        YYLicence: 营业执照
+        ComeDate: 入住日期
+        State: 状态
+        InBiz: 业务进行中
+        Memo: 备注
+        LUTS: 土地使用年限始
+        LUTO: 土地使用年限止
+        LandGetMode: 土地取得方式
+        DataSource: 数据来源
+        MappingDate: 测绘时间
+        MappingMemo: 测绘备注
+        LandCardNO: 土地证号
+        LandArea: 土地面积
+        LandProperty: 土地性质
+        CreateDate: 创建时间
+        BCardNO: 债务人证件号码
+        GarageArea: 车库面积
+        GarageCount: 车库套数
