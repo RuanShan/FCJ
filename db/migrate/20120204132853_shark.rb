@@ -95,15 +95,16 @@ class Shark < ActiveRecord::Migration
     
       create_table "dgorganises", :primary_key => "id", :force => true do |t|
         t.string  "NO",       :limit => 50,  :null => false
-        t.string  "ParentID", :limit => 32
-        t.boolean "IsRoot",                  :null => false
+        t.integer :parent_id
+        t.integer :lft
+        t.integer :rgt
         t.string  "Name",     :limit => 100, :null => false
         t.string  "PhoneNO",  :limit => 20
         t.string  "Memo",     :limit => 100
       end
     
       add_index "dgorganises", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
-      add_index "dgorganises", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
+      add_index "dgorganises", ["parent_id"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
     
       create_table "dgrateitems", :primary_key => "ID", :force => true do |t|
         t.string  "Name",        :limit => 50,  :null => false

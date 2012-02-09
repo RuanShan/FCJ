@@ -3,7 +3,7 @@ class FixersController < ApplicationController
   attr_accessor :object_class
   
   def init_class
-    class_string=params[:class]
+    class_string=(params[:class] == "Dgorganise" and params[:action] == "list") ? "Dgemployee" : params[:class]
     @object_class = class_string.classify().constantize()    
     
     # support cols groups. list cols by group, only for new|edit
@@ -33,7 +33,7 @@ class FixersController < ApplicationController
   end
 # maintain all data in this controller
   def list
-    @objects = @object_class.all()    
+    @objects = @object_class.all()
   end
   
   def new
@@ -88,5 +88,10 @@ class FixersController < ApplicationController
   #maintain dict
   def dict
     @objects = @object_class.all(:include=>:dgwordbooks)
+  end
+
+  #dgemployee
+  def employee
+    @objects = @object_class.all()
   end
 end

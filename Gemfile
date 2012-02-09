@@ -12,6 +12,7 @@ gem 'cancan'
 
 gem 'devise'
 
+gem 'nested_set'
 
 # gem 'act_as_list'
 

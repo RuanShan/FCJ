@@ -1,0 +1,7 @@
+<div style="left-margin:10px;">
+  <%= form_tag "/fixers/new/Dgorganise", :remote=>true, :id=>"organise_form" do %>
+  <%= select_tag 'hidden|parent_id', options_for_select(nested_set_options(Dgorganise) {|i, level| "#{'-' * level} #{i.Name}" }),
+      :onchange=>"/fixers/list/Dgemployee"  %>
+  <%= submit_tag (t :create)  %>
+  <% end %>
+</div>

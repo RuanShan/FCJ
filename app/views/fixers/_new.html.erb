@@ -1,6 +1,11 @@
 <h3><% t :create%> <%=@object_class.model_name.human%></h3>
 <%= form_tag "/fixers/create/#{@object_class.model_name}",:remote => true, :class=>"new" do |f| %>
-  
+  <% params.each_key do |key| %>
+    <% p = key.split("|") %>
+    <% if p[0] == "hidden" %>
+       <%= hidden_field "object", p[1], :value=>params[key]%>
+    <% end %>
+  <% end %>
   <%= render :partial=>"form"%>
   <p>
   <%= submit_tag (t :save) %>  

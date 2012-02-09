@@ -1,0 +1,27 @@
+<h2>Listing <%=@object_class.model_name.human %></h2>
+<div class="clear-block">
+  <div class="fl">
+  <%= t :search %>
+  </div>
+  <div class="fr">
+    <%= link_to (t :create), "/fixers/new/#{@object_class.model_name}", :remote=>true %>
+  </div>
+</div>
+  <%=render :partial=>"users/organise_tree"%>
+<table>
+  <tr>
+  <%for col in @object_class.list_cols%>
+    <th><%=@object_class.human_attribute_name(col) %></th>
+  <%end%>
+  </tr>
+
+<% @objects.each do |obj| %>
+  <tr>
+    <%for col in @object_class.list_cols%>
+      <td><%=h obj[col] %></td>
+    <%end%>
+    <td><%= link_to (t :edit), "/fixers/edit/#{@object_class.model_name}/#{obj.id}", :remote=>true %></td>
+    <td><%= link_to (t :destroy), "/fixers/destroy/#{@object_class.model_name}/#{obj.id}", :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
