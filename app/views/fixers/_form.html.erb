@@ -24,8 +24,8 @@ logger.debug ch.class
          controll_class += " text_area" if ch[col.to_s].type == :string and ch[col.to_s].limit >200
       %>
       <%=label_tag "object[#{col}]", @object_class.human_attribute_name(col), :class=>controll_class %>
-      <% if  col.to_s=~/ID/ %>
-          <% logger.debug "method=#{ col.to_s[0...-2].downcase}"
+      <% if  col.to_s=~/ID$/ %>
+          <% logger.debug "col=#{col},method=#{ col.to_s[0...-2].downcase}"
              belongs_to_object_class = col.to_s[0...-2].classify().constantize()  # remove suffix "ID" 
              belongs_to_objects =   belongs_to_object_class.all() 
           %>

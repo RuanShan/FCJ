@@ -182,7 +182,7 @@ class Shark < ActiveRecord::Migration
       create_table "dgwordbook", :primary_key => "id", :force => true do |t|
         t.string  "Key",      :limit => 50,  :null => false
         t.string  "Value",    :limit => 100, :null => false #名称
-        t.integer "TypeID",   :limit => 8,   :null => false #字典类型索引
+        t.integer "dgwordbooktypeID",   :limit => 8,   :null => false #字典类型索引
         t.string  "Memo",     :limit => 100
         t.integer "Priority",                :null => false
       end

@@ -1,5 +1,6 @@
 class Dgwordbooktype < ActiveRecord::Base
   self.table_name= 'dgwordbooktype'
   include FixerExtend
-  has_many :dgwordbooks, :foreign_key=>"TypeID"
+  self.manager_class = "dgwordbooktype"
+  has_many :dgwordbooks, :foreign_key=>"dgwordbooktypeID"
 end

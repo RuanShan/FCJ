@@ -1,9 +1,19 @@
+<% object_class = class_string.classify().constantize()  %>
+
+    <div class="clear-block">
+      <div class="fl">
+      <%= t :search %>
+      </div>
+      <div class="fr">
+        <%= link_to (t :create), {:controller=> "fixers",:action=>"new",:class=>class_string, :object=>{parent_name.to_sym => parent_id}}, :remote=>true %>
+      </div>
+    </div>
 <% if objects.empty? %>
     No objects
 <% else %>
 <%
   # locals   objects
-object_class =  objects.first.class
+#object_class =  objects.first.class
 %>
 
     <table>
@@ -18,6 +28,8 @@ object_class =  objects.first.class
       <%for col in object_class.list_cols%>
         <td><%=h obj[col] %></td>
       <%end%>
+        <td><%= link_to (t :edit), "/fixers/edit/#{class_string}/#{obj.id}", :remote=>true %></td>
+        <td><%= link_to (t :destroy), "/fixers/destroy/#{class_string}/#{obj.id}", :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
     </table>

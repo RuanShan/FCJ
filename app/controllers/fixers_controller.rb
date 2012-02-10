@@ -66,7 +66,8 @@ class FixersController < ApplicationController
     @object = @object_class.new(object_params)
     if @object.save
       action= @object_class.manager_class == @object_class ? "list" : @object_class.manager_class
-      redirect_back_or_default(:action=>action)
+      class_name = @object_class.manager_class == @object_class ? @object_class.model_name : @object_class.manager_class.humanize()
+      redirect_back_or_default(:action=>action,:class=>class_name)
     else
       new
     end
@@ -78,7 +79,8 @@ class FixersController < ApplicationController
     @object = @object_class.find(params[:id])
     if @object.update_attributes(object_params)
       action= @object_class.manager_class == @object_class ? "list" : @object_class.manager_class
-      redirect_back_or_default(:action=>action)
+      class_name = @object_class.manager_class == @object_class ? @object_class.model_name : @object_class.manager_class.humanize()
+      redirect_back_or_default(:action=>action,:class=>class_name)
     else
       edit
     end
@@ -87,9 +89,10 @@ class FixersController < ApplicationController
   def destroy
     @object = @object_class.find(params[:id])
     @object.destroy
-
+    action= @object_class.manager_class == @object_class ? "list" : @object_class.manager_class
+    class_name = @object_class.manager_class == @object_class ? @object_class.model_name : @object_class.manager_class.humanize()
     respond_to do |format|
-      format.html { redirect_to(:action=>:list) }
+      format.html { redirect_to(:action=>action,:class=>class_name) }
       format.xml  { head :ok }
     end
   end

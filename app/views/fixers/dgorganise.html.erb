@@ -23,7 +23,7 @@
           <%=link_to (t :update), {:controller=> "fixers",:action=>"edit",:class=>"Dgorganise", :selected_id=>org[1], :id=>org[1]}, :remote=>true %>
         </div>
         <div>
-          <%= render :partial=>"fields", :locals=>{:objects=>organise.dgemployees} %>
+          <%= render :partial=>"fields", :locals=>{:parent_id=>org[1],:parent_name=>"dgorganiseID", :objects=>organise.dgemployees, :class_string=>"Dgemployee"} %>
         </div>
       </div>
       <% end %>

@@ -15,10 +15,12 @@
     <% for wbt in @objects%>
     <div >
       <div>
-        <%=wbt[:TypeName]%>  |add, update, add word
+        <%=wbt[:TypeName]%>
+        <%=link_to (t :create), {:controller=> "fixers",:action=>"new",:class=>"Dgwordbooktype", :selected_id=>wbt[:id]}, :remote=>true %>
+        <%=link_to (t :update), {:controller=> "fixers",:action=>"edit",:class=>"Dgwordbooktype", :selected_id=>wbt[:id], :id=>wbt[:id]}, :remote=>true %>
       </div>
       <div>
-        <%= render :partial=>"fields", :locals=>{:objects=>wbt.dgwordbooks} %>
+        <%= render :partial=>"fields", :locals=>{:parent_id=>wbt[:id],:parent_name=>"dgwordbooktypeID",:objects=>wbt.dgwordbooks, :class_string=>"Dgwordbook"} %>
       </div>
     </div>
     <% end %>
