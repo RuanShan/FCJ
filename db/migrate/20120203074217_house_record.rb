@@ -272,6 +272,12 @@ class HouseRecord < ActiveRecord::Migration
       t.string "Business", :limit => 32, :null => false
     end
 
+    create_table "business_flows", :primary_key => "id", :force => true do |t|
+      t.integer "house_id"
+      t.integer "business_id"
+      t.string "state",     :limit => 20
+    end
+
   end
 
   def self.down
