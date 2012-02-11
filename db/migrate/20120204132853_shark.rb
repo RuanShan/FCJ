@@ -187,7 +187,7 @@ class Shark < ActiveRecord::Migration
         t.integer "Priority",                :null => false
       end
     
-      add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
+      add_index "dgwordbook", ["dgwordbooktypeID"], :name => "Relationship_11_FK"
     
       create_table "dgwordbooktype", :primary_key => "id", :force => true do |t|
         t.string  "key", :limit => 50,  :null => false #字典类型KEY, 即引用字典的列名. 值为 dgwordbook id.
