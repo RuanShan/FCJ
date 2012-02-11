@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -240,24 +241,24 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgemployeeroles", ["Rol_ID"], :name => "Relationship_2_FK"
 
   create_table "dgemployees", :force => true do |t|
-    t.string   "Org_ID",      :limit => 32
-    t.string   "NO",          :limit => 50,                    :null => false
-    t.string   "Name",        :limit => 20,                    :null => false
+    t.string   "dgorganiseID", :limit => 32
+    t.string   "NO",           :limit => 50,                    :null => false
+    t.string   "Name",         :limit => 20,                    :null => false
     t.integer  "Sex"
-    t.string   "IDNO",        :limit => 100
+    t.string   "IDNO",         :limit => 100
     t.datetime "JoinDate"
     t.datetime "BirthDate"
-    t.string   "PhoneNO",     :limit => 20
-    t.string   "HomeAddress", :limit => 20
-    t.string   "E_Mail",      :limit => 20
-    t.string   "Password",    :limit => 100
-    t.string   "Memo",        :limit => 100
-    t.boolean  "IsUse",                      :default => true, :null => false
-    t.integer  "job",         :limit => 8
+    t.string   "PhoneNO",      :limit => 20
+    t.string   "HomeAddress",  :limit => 20
+    t.string   "E_Mail",       :limit => 20
+    t.string   "Password",     :limit => 100
+    t.string   "Memo",         :limit => 100
+    t.boolean  "IsUse",                       :default => true, :null => false
+    t.integer  "job",          :limit => 8
   end
 
   add_index "dgemployees", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
-  add_index "dgemployees", ["Org_ID"], :name => "Relationship_6_FK"
+  add_index "dgemployees", ["dgorganiseID"], :name => "Relationship_6_FK"
   add_index "dgemployees", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
 
   create_table "dgflow", :force => true do |t|
@@ -288,16 +289,17 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgfunctions", ["GroupID"], :name => "FK_DGFUNCTI_REFERENCE_DGFUNCGR"
 
   create_table "dgorganises", :force => true do |t|
-    t.string  "NO",       :limit => 50,  :null => false
-    t.string  "ParentID", :limit => 32
-    t.boolean "IsRoot",                  :null => false
-    t.string  "Name",     :limit => 100, :null => false
-    t.string  "PhoneNO",  :limit => 20
-    t.string  "Memo",     :limit => 100
+    t.string  "NO",           :limit => 50,  :null => false
+    t.integer "dgorganiseID"
+    t.integer "lft"
+    t.integer "rgt"
+    t.string  "Name",         :limit => 100, :null => false
+    t.string  "PhoneNO",      :limit => 20
+    t.string  "Memo",         :limit => 100
   end
 
   add_index "dgorganises", ["NO"], :name => "AK_KEY_2_DGORGANI", :unique => true
-  add_index "dgorganises", ["ParentID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
+  add_index "dgorganises", ["dgorganiseID"], :name => "FK_DGORGANI_REFERENCE_DGORGANI"
 
   create_table "dgrateitems", :primary_key => "ID", :force => true do |t|
     t.string  "Name",        :limit => 50,  :null => false
@@ -368,14 +370,14 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   end
 
   create_table "dgwordbook", :force => true do |t|
-    t.string  "Key",      :limit => 50,  :null => false
-    t.string  "Value",    :limit => 100, :null => false
-    t.integer "TypeID",   :limit => 8,   :null => false
-    t.string  "Memo",     :limit => 100
-    t.integer "Priority",                :null => false
+    t.string  "Key",              :limit => 50,  :null => false
+    t.string  "Value",            :limit => 100, :null => false
+    t.integer "dgwordbooktypeID", :limit => 8,   :null => false
+    t.string  "Memo",             :limit => 100
+    t.integer "Priority",                        :null => false
   end
 
-  add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
+  add_index "dgwordbook", ["dgwordbooktypeID"], :name => "Relationship_11_FK"
 
   create_table "dgwordbooktype", :force => true do |t|
     t.string  "key",      :limit => 50,  :null => false
