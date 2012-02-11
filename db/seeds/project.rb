@@ -836,10 +836,10 @@ objs=[
 
 Project.delete_all              
 for ha in objs
-  ha["id"] = ha["ID"][-6,6].to_i(16)
-  ha.delete("ID")
-  ha["SectionID"] = ha["SectionID"][-6,6].to_i(16)
-  ha["DeveloperID"] = ha["DeveloperID"][-6,6].to_i(16)
+  ha["id"] = ha[:ID][-6,6].to_i(16)
+  ha.delete(:ID)
+  ha[:SectionID] = ha[:SectionID][-6,6].to_i(16)
+  ha[:DeveloperID] = ha[:DeveloperID][-6,6].to_i(16)
   
   obj = Project.new
   obj.send(:attributes=, ha, false)

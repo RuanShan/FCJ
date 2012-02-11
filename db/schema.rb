@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -80,6 +79,12 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "business", ["NameID"], :name => "AK_KEY_2_BUSINESS", :unique => true
   add_index "business", ["SelectBiz"], :name => "FK_BUSINESS_REFERENCE_BUSINESS"
+
+  create_table "business_flows", :force => true do |t|
+    t.integer "house_id"
+    t.integer "business_id"
+    t.string  "state",       :limit => 20
+  end
 
   create_table "closeopenhouse", :id => false, :force => true do |t|
     t.string   "ID",              :limit => 32,  :null => false
@@ -190,6 +195,10 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "developer", ["NO"], :name => "AK_KEY_2_DEVELOPE", :unique => true
   add_index "developer", ["OwnerID"], :name => "FK_DEVELOPE_REFERENCE_OWNERINF"
 
+  create_table "dgbiz_packages", :force => true do |t|
+    t.string "PackageName", :limit => 50
+  end
+
   create_table "dgbizandrateitems", :id => false, :force => true do |t|
     t.string  "Biz",       :limit => 32, :null => false
     t.integer "RateItems", :limit => 8,  :null => false
@@ -226,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string  "Memo",         :limit => 200
     t.string  "OperPage",     :limit => 200
     t.string  "StartService", :limit => 100
-    t.string  "PackageName",  :limit => 50
+    t.integer "package_id"
   end
 
   add_index "dgbizs", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true

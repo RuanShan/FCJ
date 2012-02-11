@@ -409,10 +409,18 @@ objs=[
   {"StartService"=>"sHNoLand", "StartVarType"=>nil, "Memo"=>"赠与", "Code"=>"P58#2#WP58", "ID"=>"4028817c303407c90130342928ff003c", "PackageName"=>"转移登记", "StartVarName"=>"", "OperPage"=>"houseBizStart"},
   {"StartService"=>"normalHouseNoBiz", "StartVarType"=>nil, "Memo"=>"合照", "Code"=>"P55#2#WP55", "ID"=>"4028817c303407c90130342928ff003d", "PackageName"=>"变更登记", "StartVarName"=>"", "OperPage"=>"housesBizStart"}]
 
-Dgbiz.delete_all              
+DgbizPackage.delete_all       
+Dgbiz.delete_all   
+packages = []
 for ha in objs
-  ha[:id] = ha["ID"][-6,6].to_i(16)
-  ha.delete("ID")
+  package = packages.select{|package| package['PackageName']==ha['PackageName']}
+  if package.nil?
+    package = DgbizPackage.create(ha.slice("PackageName"))
+    packages<< package
+  end  
+  ha[:package_id] = package.id  
+  ha[:id] = ha["ID"][-7,7].to_i(16)
+  ha.delete("ID");ha.delete("PackageName")
   obj = Dgbiz.new
   obj.send(:attributes=, ha, false)
   obj.save

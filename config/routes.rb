@@ -1,4 +1,8 @@
 Fcj::Application.routes.draw do
+  resources :houses
+
+  resources :businesses
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match 'dict' => 'welcome#dictionary'
