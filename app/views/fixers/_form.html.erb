@@ -1,5 +1,5 @@
   <% 
-     max_line_fields=3
+     max_line_fields=@object_class.max_line_cols
      ch= @object_class.columns_hash
 logger.debug ch.class
   %>
