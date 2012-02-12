@@ -7,8 +7,11 @@ class Shark < ActiveRecord::Migration
         t.string  "Memo",         :limit => 200
         t.string  "OperPage",     :limit => 200
         t.string  "StartService", :limit => 100
-        t.string  "PackageName",  :limit => 50
+        t.integer "package_id"
       end
+    create_table "dgbiz_packages", :primary_key => "id", :force => true do |t|
+      t.string  "PackageName",  :limit => 50
+    end
     
       add_index "dgbizs", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
       add_index "dgbizs", ["StartVarType"], :name => "FK_DGBIZ_REFERENCE_DGWORDBO"
@@ -213,6 +216,7 @@ class Shark < ActiveRecord::Migration
 
   def self.down
     drop_table :dgbizs                  #业务
+    drop_table :dgbiz_packages         #业务包
     drop_table :dgbizandrateitems      #业务收费项目
     drop_table :dgbizdoc
     drop_table :dgbizfile

@@ -6,12 +6,27 @@ namespace :db do
     raise "TABLE is required" unless table_name
     file_path = "#{RAILS_ROOT}/db/#{table_name}.rb"      
     open(file_path, "w") do |f|
-              res =table_name.classify.constantize.all
+              table_class = table_name.classify.constantize
+              res =table_class.all
+              columns = table_class.columns
+              columns.delete_if{|col| reject_attribute_names.include?(col.name)}
               f.puts 'objs=['
               record_count = 0
               for row in res
                 f.print ",\n" if record_count>0
-                f.print "  "+ row.attributes.delete_if {|key, value| reject_attribute_names.include? key }.inspect
+                str = ""
+                for col in columns
+                  next if row[col.name].nil?
+                  str << "," unless str.empty? 
+                  if col.type ==:decimal
+                    str << ":#{col.name}=>#{row[col.name].to_s}"                  
+                  elsif col.type ==:datetime
+                    str << ":#{col.name}=>'#{row[col.name]}'"
+                  else
+                    str << ":#{col.name}=>#{row[col.name].inspect}"
+                  end
+                end
+                f.print " {"+ str +"}"
                 record_count+=1
               end
               f.puts ']'
