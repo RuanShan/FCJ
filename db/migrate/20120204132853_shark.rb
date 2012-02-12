@@ -151,13 +151,13 @@ class Shark < ActiveRecord::Migration
       add_index "dgrolefunctions", ["Fun_ID"], :name => "Relationship_4_FK"
       add_index "dgrolefunctions", ["Rol_ID"], :name => "Relationship_3_FK"
 
-      create_table "dgflow", :primary_key => "id", :force => true do |t|
+      create_table "dgflows", :primary_key => "id", :force => true do |t|
         t.string "Name", :limit => 20, :null => false
         t.integer "position"
       end
-      create_table "dgroleflow", :id => false, :force => true do |t|
+      create_table "dgroleflows", :id => false, :force => true do |t|
         t.string "Rol_ID", :limit => 32, :null => false
-        t.string "FLO_ID", :limit => 32, :null => false
+        t.string "Flo_ID", :limit => 32, :null => false
       end
     
         
@@ -187,7 +187,7 @@ class Shark < ActiveRecord::Migration
         t.integer "Priority",                :null => false
       end
     
-      add_index "dgwordbook", ["TypeID"], :name => "Relationship_11_FK"
+      add_index "dgwordbook", ["dgwordbooktypeID"], :name => "Relationship_11_FK"
     
       create_table "dgwordbooktype", :primary_key => "id", :force => true do |t|
         t.string  "key", :limit => 50,  :null => false #字典类型KEY, 即引用字典的列名. 值为 dgwordbook id.
@@ -212,21 +212,21 @@ class Shark < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :dgbiz                  #业务
+    drop_table :dgbizs                  #业务
     drop_table :dgbizandrateitems      #业务收费项目
     drop_table :dgbizdoc
     drop_table :dgbizfile
-    drop_table :dgemployee             #员工
-    drop_table :dgemployeerole         #员工角色关系
+    drop_table :dgemployees             #员工
+    drop_table :dgemployeeroles         #员工角色关系
     drop_table :dgfuncgroups           #功能组
     drop_table :dgfunctions            #功能
-    drop_table :dgorganise             #组织机构
+    drop_table :dgorganises             #组织机构
     drop_table :dgrateitems            #收费项目
     drop_table :dgrecordcontents       #卷内目录
     drop_table :dgreportitems          #报表
-    drop_table :dgrole                 #角色
-    drop_table :dgrolebiz              #业务权限
-    drop_table :dgrolefunction         #功能权限
+    drop_table :dgroles                 #角色
+    drop_table :dgrolebizs              #业务权限
+    drop_table :dgrolefunctions         #功能权限
     drop_table :dgsystemlog            #系统日志
     drop_table :dgsystemparam          #系统参数
     drop_table :dgwordbook             #字典
@@ -234,7 +234,7 @@ class Shark < ActiveRecord::Migration
     drop_table :dtproperties
     drop_table :objectid
     # added
-    drop_table :dgflow
-    drop_table :dgroleflow
+    drop_table :dgflows
+    drop_table :dgroleflows
   end
 end

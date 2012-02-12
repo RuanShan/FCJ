@@ -1,0 +1,19 @@
+<% if role.nil? %>
+    No role selected
+<% else %>
+  <% for type in types %>
+    <div id="<%=type %>_permission" class="permission">
+      <% for obj in objects[types.index(type)] %>
+        <%
+           if selected_objects[types.index(type)].include?(obj)
+             checked_value = true
+           else
+             checked_value = false
+           end
+        %>
+        <%=check_box_tag "#{type}|#{obj.id.to_s}","1",checked_value  %><label for="<%=type %>_<%=obj.id.to_s%>"><% if type == "dgbiz" %><%=obj[:Memo] %><% else %><%=obj[:Name] %><% end %></label><br/><br/>
+      <% end %>
+    </div>
+  <% end %>
+
+<% end %>

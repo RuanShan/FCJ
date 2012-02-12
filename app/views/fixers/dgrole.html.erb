@@ -1,0 +1,55 @@
+<div style="height:50px;"> subheader
+</div>
+
+<div id="role_list" class="absolute_tbl" style="top:50px;width:130px;overflow:auto;">
+  <div>  <%=@object_class.human_attribute_name('TypeName') %>
+  </div>
+  <ul class="list">
+  <% for role in @objects%>
+   <li data-section-id="<%=role.id%>"> <a> <%=role[:Name]%> </a></li>
+  <% end %>
+  </ul>
+  <input type="hidden" name="selected" />
+</div>
+<div id="permission_list" class="list_fixer absolute_trb" style="top:50px;left:130px;overflow:auto;">
+  <% for role in @objects%>
+  <div >
+    <div>
+      <%=role[:Name]%>
+      <%=link_to (t :create), {:controller=> "fixers",:action=>"new",:class=>"Dgrole", :selected_id=>role[:id]}, :remote=>true %>
+      <%=link_to (t :update), {:controller=> "fixers",:action=>"edit",:class=>"Dgrole", :selected_id=>role[:id], :id=>role[:id]}, :remote=>true %>
+    </div>
+    <div>
+      <%=form_tag url_for(:controller=> "fixers",:action=>"change_permission"), :remote => true do  %>
+        <%=submit_tag (t :update)%>
+        <%=hidden_field_tag :role_id, role[:id] %>
+
+      <div id="tabs<%=role[:id].to_s %>">
+          <ul>
+              <li><a href="#tabs-1">Employees</a></li>
+              <li><a href="#tabs-2">Functions</a></li>
+              <li><a href="#tabs-3">Business</a></li>
+          </ul>
+          <div id="tabs-1">
+            <%= render :partial=>"permissions", :locals=>{:role=>role, :types=>["dgemployee"], :objects=>[@dgemployees], :selected_objects=>[role.dgemployees]} %>
+          </div>
+          <div id="tabs-2">
+            <%= render :partial=>"permissions", :locals=>{:role=>role, :types=>["dgfunction"], :objects=>[@dgfunctions], :selected_objects=>[role.dgfunctions]} %>
+          </div>
+          <div id="tabs-3">
+            <%= render :partial=>"permissions", :locals=>{:role=>role, :types=>["dgbiz","dgflow"], :objects=>[@dgbizs,@dgflows], :selected_objects=>[role.dgbizs,role.dgflows]} %>
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+  <script type="text/javascript">
+  $(document).ready(function() {
+add_list_feature("#role_list li");
+   <% for role in @objects%>
+      $( "#tabs<%=role[:id].to_s %>" ).tabs();
+   <% end %>
+  })
+  </script>

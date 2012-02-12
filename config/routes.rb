@@ -1,4 +1,6 @@
 Fcj::Application.routes.draw do
+  #devise_for :dgemployees
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match 'dict' => 'welcome#dictionary'
@@ -10,8 +12,9 @@ Fcj::Application.routes.draw do
   match '/fixers/create/:class' => 'fixers#create'
   match '/fixers/dgwordbooktype/:class' => 'fixers#dgwordbooktype'
   match '/fixers/dgorganise/:class' => 'fixers#dgorganise'
+  match '/fixers/dgrole/:class' => 'fixers#dgrole'
   match ':controller/:action'
-  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

@@ -1,5 +1,6 @@
 class FixersController < ApplicationController
-  before_filter :init_class
+  #before_filter :authenticate_dgemployee!
+  before_filter :init_class, :except => "change_permission"
   attr_accessor :object_class
   
   def init_class
@@ -100,12 +101,33 @@ class FixersController < ApplicationController
   #maintain dict
   def dgwordbooktype
     @objects = @object_class.all(:include=>:dgwordbooks)
-    @objects.delete_if{|dgt| dgt.dgwordbooks.empty? }
 
   end
 
   def dgorganise
     @objects = @object_class.all()
     @current_organise_id = params[:selected_id].nil? ? "0" : params[:selected_id]
+  end
+
+  def dgrole
+    @objects = @object_class.all(:include=>[:dgemployees,:dgfunctions,:dgbizs,:dgflows])
+    @dgemployees = Dgemployee.all()
+    @dgfunctions = Dgfunction.all()
+    @dgbizs = Dgbiz.all()
+    @dgflows = Dgflow.all()
+  end
+
+  def change_permission
+    role = Dgrole.find(params[:role_id])
+    types = ['dgemployee','dgfunction','dgbiz','dgflow']
+    for type in types
+      type_ids=[]
+      params.each_key do |key|
+        t,id = key.split("|")
+        type_ids << id if t == type
+      end
+      role.send(type+"_ids=",type_ids)
+    end
+    redirect_back_or_default(:action=>"dgrole",:class=>Dgrole)
   end
 end
