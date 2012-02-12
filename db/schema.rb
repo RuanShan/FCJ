@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204132853) do
+ActiveRecord::Schema.define(:version => 20120210075118) do
 
   create_table "build", :force => true do |t|
     t.string   "NO",            :limit => 50,                                                     :null => false
@@ -80,12 +80,6 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "business", ["NameID"], :name => "AK_KEY_2_BUSINESS", :unique => true
   add_index "business", ["SelectBiz"], :name => "FK_BUSINESS_REFERENCE_BUSINESS"
-
-  create_table "business_flows", :force => true do |t|
-    t.integer "house_id"
-    t.integer "business_id"
-    t.string  "state",       :limit => 20
-  end
 
   create_table "closeopenhouse", :id => false, :force => true do |t|
     t.string   "ID",              :limit => 32,  :null => false
@@ -196,10 +190,6 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "developer", ["NO"], :name => "AK_KEY_2_DEVELOPE", :unique => true
   add_index "developer", ["OwnerID"], :name => "FK_DEVELOPE_REFERENCE_OWNERINF"
 
-  create_table "dgbiz_packages", :force => true do |t|
-    t.string "PackageName", :limit => 50
-  end
-
   create_table "dgbizandrateitems", :id => false, :force => true do |t|
     t.string  "Biz",       :limit => 32, :null => false
     t.integer "RateItems", :limit => 8,  :null => false
@@ -236,7 +226,7 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
     t.string  "Memo",         :limit => 200
     t.string  "OperPage",     :limit => 200
     t.string  "StartService", :limit => 100
-    t.integer "package_id"
+    t.string  "PackageName",  :limit => 50
   end
 
   add_index "dgbizs", ["Code"], :name => "AK_KEY_2_DGBIZ", :unique => true
@@ -251,27 +241,39 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
   add_index "dgemployeeroles", ["Rol_ID"], :name => "Relationship_2_FK"
 
   create_table "dgemployees", :force => true do |t|
-    t.string   "dgorganiseID", :limit => 32
-    t.string   "NO",           :limit => 50,                    :null => false
-    t.string   "Name",         :limit => 20,                    :null => false
+    t.string   "dgorganiseID",           :limit => 32
+    t.string   "NO",                     :limit => 50,                    :null => false
+    t.string   "Name",                   :limit => 20,                    :null => false
     t.integer  "Sex"
-    t.string   "IDNO",         :limit => 100
+    t.string   "IDNO",                   :limit => 100
     t.datetime "JoinDate"
     t.datetime "BirthDate"
-    t.string   "PhoneNO",      :limit => 20
-    t.string   "HomeAddress",  :limit => 20
-    t.string   "E_Mail",       :limit => 20
-    t.string   "Password",     :limit => 100
-    t.string   "Memo",         :limit => 100
-    t.boolean  "IsUse",                       :default => true, :null => false
-    t.integer  "job",          :limit => 8
+    t.string   "PhoneNO",                :limit => 20
+    t.string   "HomeAddress",            :limit => 20
+    t.string   "E_Mail",                 :limit => 20
+    t.string   "Password",               :limit => 100
+    t.string   "Memo",                   :limit => 100
+    t.boolean  "IsUse",                                 :default => true, :null => false
+    t.integer  "job",                    :limit => 8
+    t.string   "email",                                 :default => "",   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "dgemployees", ["NO"], :name => "AK_KEY_2_DGEMPLOY", :unique => true
   add_index "dgemployees", ["dgorganiseID"], :name => "Relationship_6_FK"
+  add_index "dgemployees", ["email"], :name => "index_dgemployees_on_email", :unique => true
   add_index "dgemployees", ["job"], :name => "FK_DGEMPLOY_REFERENCE_DGWORDBO"
+  add_index "dgemployees", ["reset_password_token"], :name => "index_dgemployees_on_reset_password_token", :unique => true
 
-  create_table "dgflow", :force => true do |t|
+  create_table "dgflows", :force => true do |t|
     t.string  "Name",     :limit => 20, :null => false
     t.integer "position"
   end
@@ -341,9 +343,9 @@ ActiveRecord::Schema.define(:version => 20120204132853) do
 
   add_index "dgrolebizs", ["Biz_ID"], :name => "FK_DGROLEBI_REFERENCE_DGBIZ"
 
-  create_table "dgroleflow", :id => false, :force => true do |t|
+  create_table "dgroleflows", :id => false, :force => true do |t|
     t.string "Rol_ID", :limit => 32, :null => false
-    t.string "FLO_ID", :limit => 32, :null => false
+    t.string "Flo_ID", :limit => 32, :null => false
   end
 
   create_table "dgrolefunctions", :id => false, :force => true do |t|

@@ -1,3 +1,3 @@
 class Dgbiz < ActiveRecord::Base
-  #self.table_name = "dgbiz"
+  has_and_belongs_to_many :dgroles, :join_table=>"dgrolebizs", :foreign_key => "Biz_ID", :association_foreign_key => "Rol_ID"
 end

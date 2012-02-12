@@ -20,6 +20,8 @@
         <%= render :partial=>"/layouts/left_menu"%>
       </div>
       <div class="absolute_trb center_part">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
     </div>
