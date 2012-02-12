@@ -25,6 +25,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/new.xml
   def new
     @business = Business.new
+    @packages = DgbizPackage.all(:include=>:dgbiz)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -81,5 +82,21 @@ class BusinessesController < ApplicationController
     end
   end
   
+  def delete_duplicated
+    
+    bizs = Dgbiz.all(:order=>"Memo")
+    hash = {}
+    for biz in bizs
+      hash[biz[:Momo]]||=[]
+      hash[biz[:Momo]] << biz
+    end
+    hash.each_pair{|key,val|
+      if val.size>1
+        for biz in val[1..-1]
+          biz.delete
+        end
+      end
+    }    
+  end
   
 end

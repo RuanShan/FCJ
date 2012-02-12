@@ -2,8 +2,12 @@ Fcj::Application.routes.draw do
   #devise_for :dgemployees
   resources :houses
 
-  resources :businesses
-
+  resources :businesses do
+       collection do
+         get 'delete_duplicated'
+       end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match 'dict' => 'welcome#dictionary'
