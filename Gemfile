@@ -14,9 +14,9 @@ gem 'devise'
 
 gem 'nested_set', '1.6.4'
 
-gem 'will_paginate', '~> 3.0'
+#gem 'will_paginate', '~> 3.0'
 
-
+gem 'kaminari'
 # gem 'act_as_list'
 
 # gem 'act_as_tree'
