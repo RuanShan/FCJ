@@ -36,7 +36,7 @@ class FixersController < ApplicationController
   end
 # maintain all data in this controller
   def list
-    @objects = @object_class.all()    
+    @objects = @object_class.paginate(:page => params[:page], :per_page => 20)
   end
   
   def new

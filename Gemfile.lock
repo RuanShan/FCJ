@@ -81,6 +81,7 @@ GEM
     tzinfo (0.3.31)
     warden (1.1.0)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -92,3 +93,4 @@ DEPENDENCIES
   mysql2 (= 0.2.18)
   nested_set (= 1.6.4)
   rails (= 3.0.10)
+  will_paginate (~> 3.0)
