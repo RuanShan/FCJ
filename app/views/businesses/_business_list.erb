@@ -1,0 +1,17 @@
+<% # local_params: businesses 
+%>
+
+<div>
+  <table>
+   <tr>
+     <th>业务名称</th>
+     <th>操作</th>
+   </tr>
+   <% for business in businesses%>
+   <tr>
+       <td><%= business[:Memo]%></td>
+       <td><a>建立业务</a></td>
+   </tr>
+   <% end%>
+  </table>
+</div>
