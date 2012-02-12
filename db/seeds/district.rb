@@ -6,7 +6,7 @@ objs=[
 
 District.delete_all              
 for ha in objs
-  ha[:id] = ha["ID"][-6,6].to_i(16)
+  ha[:id] = ha["ID"][-7,7].to_i(16)
   ha.delete("ID")
   obj = District.new
   obj.send(:attributes=, ha, false)

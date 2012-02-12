@@ -6,12 +6,13 @@ module FixerExtend
   module ClassMethods
     def init
       self.cattr_accessor :manager_class
-      self.cattr_accessor :list_cols,:edit_cols,:new_cols
+      self.cattr_accessor :list_cols,:edit_cols,:new_cols, :max_line_cols
       self.init_cols
       self.manager_class = self
     end
     
     def init_cols
+      self.max_line_cols = 3
       self.list_cols = []
       self.new_cols = []      
       for col in content_columns

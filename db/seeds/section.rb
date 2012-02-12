@@ -1,3 +1,4 @@
+# encoding: utf-8
 objs=[
   {"NO"=>"4821", "CreateDate"=>'Fri, 02 Sep 2011 08:00:00 CST +08:00', "Name"=>"西海关工人村0", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>"", "ID"=>"0401A8C01322906B0132132290940000", "Address"=>"大东区西海关工人村0"},
   {"NO"=>"4831", "CreateDate"=>'Sat, 03 Sep 2011 01:11:24 CST +08:00', "Name"=>"大东区迎宾大街AB区", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"0401A8C01322906B0132132296820096", "Address"=>"大东区大东区迎宾大街AB区"},
@@ -175,7 +176,7 @@ objs=[
   {"NO"=>"4840", "CreateDate"=>'Sat, 03 Sep 2011 18:20:50 CST +08:00', "Name"=>"大东区工业街", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01322D0F201321322D1690000", "Address"=>"大东区大东区工业街"},
   {"NO"=>"4853", "CreateDate"=>'Sat, 03 Sep 2011 23:25:14 CST +08:00', "Name"=>"大东区黄海大街", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01322D30001321322E2D50008", "Address"=>"大东区大东区黄海大街"},
   {"NO"=>"4861", "CreateDate"=>'Sun, 04 Sep 2011 00:57:13 CST +08:00', "Name"=>"喜祥园小区", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01322E4F101321322E8180001", "Address"=>"大东区喜祥园小区"},
-  {"NO"=>"4873", "CreateDate"=>'Wed, 07 Sep 2011 00:38:23 CST +08:00', "Name"=>"医药公司", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01323DCF701321323DE350002", "Address"=>"大东区医药公司"},
+ # {"NO"=>"4873", "CreateDate"=>'Wed, 07 Sep 2011 00:38:23 CST +08:00', "Name"=>"医药公司", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01323DCF701321323DE350002", "Address"=>"大东区医药公司"},
   {"NO"=>"4879", "CreateDate"=>'Wed, 07 Sep 2011 22:33:08 CST +08:00', "Name"=>"八棵树四组", "DistrictID"=>"FC01A8C0127CBA460127127CBA470002", "Memo"=>nil, "ID"=>"CB01A8C01324292F0132132429700000", "Address"=>"新城区八棵树四组"},
   {"NO"=>"4881", "CreateDate"=>'Wed, 07 Sep 2011 23:26:43 CST +08:00', "Name"=>"友好村", "DistrictID"=>"FC01A8C0127CBA460127127CBA470001", "Memo"=>nil, "ID"=>"CB01A8C013242A83013213242C810001", "Address"=>"新兴区友好村"},
   {"NO"=>"4902", "CreateDate"=>'Fri, 09 Sep 2011 23:15:18 CST +08:00', "Name"=>"新星小区", "DistrictID"=>"FC01A8C0127CBA460127127CBA470000", "Memo"=>nil, "ID"=>"CB01A8C01324D09201321324D0A50000", "Address"=>"大东区新星小区"},
@@ -276,8 +277,9 @@ objs=[
 
 Section.delete_all              
 for ha in objs
-  ha[:id] = ha["ID"][-6,6].to_i(16)
+  ha[:id] = ha["ID"][-7,7].to_i(16)
   ha.delete("ID")
+  ha["DistrictID"] = ha["DistrictID"][-7,7].to_i(16)
   obj = Section.new
   obj.send(:attributes=, ha, false)
   obj.save

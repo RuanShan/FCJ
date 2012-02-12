@@ -1,3 +1,4 @@
+# encoding: utf-8
 objs=[
   {"StartService"=>"sealProjectHouse", "StartVarType"=>nil, "Memo"=>"工程查封登记", "Code"=>"P81#1#WP81", "ID"=>"402881482c672ba1012c673467c40001", "PackageName"=>"其他业务", "StartVarName"=>"", "OperPage"=>"projectBizStart"},
   {"StartService"=>"mortSellChangeHouse", "StartVarType"=>nil, "Memo"=>"预告商品房抵押权预告注销登记", "Code"=>"P4#1#WP4", "ID"=>"402881482c672ba1012c673467d40002", "PackageName"=>"抵押登记", "StartVarName"=>"WP1;WP2;WP3", "OperPage"=>"houseBusinessStart"},
@@ -413,7 +414,7 @@ DgbizPackage.delete_all
 Dgbiz.delete_all   
 packages = []
 for ha in objs
-  package = packages.select{|package| package['PackageName']==ha['PackageName']}
+  package = packages.select{|package| package['PackageName']==ha['PackageName']}.first
   if package.nil?
     package = DgbizPackage.create(ha.slice("PackageName"))
     packages<< package
